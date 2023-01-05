@@ -1,18 +1,20 @@
-import { NavBar } from "./styles"
-import Logo from "../../assets/Logo.svg"
-import Logout from "../../assets/logout.svg"
+import { HeaderContainer, LogoutImg, ProfileImg } from "./styles";
+
+import Logo from "../../assets/Logo.svg";
+import Logout from "../../assets/logout.svg";
+import ProfileImage from "../../assets/img_perfil_default.png"
+
 export const Header = () => {
     return(
-        <NavBar>
+        <HeaderContainer>
             <nav>
+                <img src={Logo} />
+
                 <div>
-                    <img src={Logo} alt="" />
-                </div>
-                <div>
-                    <img src="" alt="ProfilePicture" />
-                    <img src={Logout} alt="Logout" />
+                    <ProfileImg src={ProfileImage} alt="Foto de perfil"/>
+                    <LogoutImg src={Logout} alt="Logout" />
                 </div>
             </nav>
-        </NavBar>
+        </HeaderContainer>
     )
 }
