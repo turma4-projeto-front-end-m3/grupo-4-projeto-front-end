@@ -1,7 +1,17 @@
+import { FilterBtn } from "../../styles/FilterButton";
+import { FilterContainer } from "./styles";
+
 export const ProfilePage = () => {
   return (
     <>
-      <h1>ProfilePage</h1>
+      <FilterContainer>
+        <div>
+          <FilterBtn>Todos</FilterBtn>
+          <FilterBtn>Massas</FilterBtn>
+        </div>
+
+        
+      </FilterContainer>
     </>
   );
 };
