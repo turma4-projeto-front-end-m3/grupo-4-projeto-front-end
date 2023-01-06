@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+import { Header } from "../../components/Header";
+=======
 import { Header } from "../../components/Header/";
 import Welcome from "../../assets/BemVindo.svg"
 import { Button, HomeContainer, HomeFilterContainer, HomePublish } from "./styles";
@@ -5,6 +8,7 @@ import { FilterBtn } from "../../styles/FilterButton";
 import { InputSearchContainer } from "../ProfilePage/styles";
 import { Footer } from "../../components/Footer";
 import { RecipesList } from "../../components/RecipesList";
+>>>>>>> db01a40a3cc9cacfa0e10dff698b29447e073f70
 export const HomePage = () => {
     return (
         <>
