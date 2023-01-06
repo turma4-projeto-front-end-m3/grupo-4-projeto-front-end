@@ -13,7 +13,7 @@ export const ProfilePage = () => {
     <>
       <Header />
 
-      <FilterContainer>
+      {/* <FilterContainer>
         <div>
           <FilterBtn>Todos</FilterBtn>
           <FilterBtn>Massas</FilterBtn>
@@ -26,7 +26,7 @@ export const ProfilePage = () => {
 
           <img src={SearchIcon} alt="Icone de pesquisa" />
         </InputSearchContainer>
-      </FilterContainer>
+      </FilterContainer> */}
 
       <MainContainer>
         <div>
