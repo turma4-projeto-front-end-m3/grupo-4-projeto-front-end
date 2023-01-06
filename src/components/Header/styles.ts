@@ -13,7 +13,16 @@ export const HeaderContainer = styled.header`
         justify-content: space-between;
     }
 
-    & > nav > div {
+    .logo_container {
+        display: flex;
+        align-items: center;
+
+        font-weight: 800;
+        font-size: 17px;
+        color: var(--white);
+    }
+
+    .profile_container {
         display: flex;
         align-items: center;
         gap: 30px;
@@ -31,21 +40,12 @@ export const HeaderContainer = styled.header`
         height: fit-content;
 
         padding: 12px 20px;
+    }
 
+    @media (max-width: 400px) {
         & > nav {
             flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        & > nav > img {
-            margin-left: 60px;
-        }
-
-        & > nav > div {
-            width: 100%;
-
-            justify-content: center;
+            gap: 20px
         }
     }
 `
