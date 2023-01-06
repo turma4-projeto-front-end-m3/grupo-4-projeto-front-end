@@ -16,6 +16,19 @@ export const HomeContainer = styled.main`
     & > div > img {
         width: 100%;
     }
+
+    @media(max-width: 425px){
+        padding: 0 30px;
+
+        & > div{
+            font-size: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        & > div > img{
+            display: none;
+        }
+    }
 `
 
 export const Button = styled.button`
@@ -36,7 +49,7 @@ export const Button = styled.button`
         background-color: var(--white);
     }
     
-    @media(max-width: 400px){
+    @media(max-width: 425px){
         width: 100%;
     }
 `
@@ -48,20 +61,26 @@ export const HomeFilterContainer = styled.div`
     gap: 11px;
     width: 100%;
 
-    @media(max-width: 400px){
+    @media(max-width: 425px){
         overflow-x: scroll;
     }
 `
 export const HomePublish = styled.div`
     display: flex;
     justify-content: space-between;
+
+    @media(max-width: 425px){
+        flex-direction: column;
+    }
 `
 export const RecipesContainer = styled.ul`
+    margin-top: 10px;
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
 
-    @media(max-width: 400px){
-
+    @media(max-width: 425px){
+        gap: 10px;
+        justify-content: center;
     }
 `
