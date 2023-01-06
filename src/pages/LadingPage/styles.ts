@@ -59,9 +59,9 @@ export const Container = styled.div`
     width: 170px;
     text-align: center;
 
-    font-weight: 800;
+    font-weight: 500;
     font-size: 15px;
-    color: var(--black);
+    color: #FFFF;
   }
 
   a {
