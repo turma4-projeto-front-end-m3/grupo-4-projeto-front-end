@@ -7,6 +7,13 @@ export const StyledRecipeModalBackground = styled.div`
   height: 100vh;
   width: 100%;
   background-color: rgb(0, 0, 0, 0.5);
+
+  @media (max-width: 630px) {
+    height: max-content;
+    max-height: max-content;
+    overflow-y: scroll;
+    padding: 2rem 0;
+  }
 `;
 
 export const StyledRecipeModal = styled.div`
@@ -16,6 +23,11 @@ export const StyledRecipeModal = styled.div`
   max-width: 50rem;
   max-height: 50rem;
   border-radius: 0.5rem;
+
+  @media (max-width: 630px) {
+    max-height: max-content;
+    width: 90%;
+  }
 
   header {
     display: flex;
@@ -42,6 +54,12 @@ export const StyledRecipeModal = styled.div`
     display: flex;
     padding: 1rem 3rem 2rem 3rem;
     gap: 2rem;
+
+    @media (max-width: 630px) {
+      flex-direction: column;
+      max-height: max-content;
+      padding: 0.5rem;
+    }
 
     div {
       display: flex;
@@ -71,6 +89,18 @@ export const StyledRecipeModal = styled.div`
       margin-bottom: 0.5rem;
       color: var(--gray);
     }
+
+    section {
+      width: 100%;
+      height: 20%;
+      border-radius: 0.5rem;
+      background-color: #ffffff;
+      margin-bottom: 2.5rem;
+
+      @media (max-width: 630px) {
+        height: 5rem;
+      }
+    }
   }
 
   .miniCont {
@@ -89,14 +119,6 @@ export const StyledRecipeModal = styled.div`
     padding: 0 0.3rem;
   }
 
-  section {
-    width: 100%;
-    height: 20%;
-    border-radius: 0.5rem;
-    background-color: #ffffff;
-    margin-bottom: 2.5rem;
-  }
-
   textarea {
     width: 100%;
     height: 30%;
@@ -105,6 +127,10 @@ export const StyledRecipeModal = styled.div`
     border: none;
     margin-bottom: 0.5rem;
     resize: none;
+
+    @media (max-width: 630px) {
+      height: 5rem;
+    }
   }
 
   .buttonMiniCont {

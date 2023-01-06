@@ -1,5 +1,20 @@
 import styled from "styled-components";
 
+export const StyledRemoveRecipeModalBackground = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(0, 0, 0, 0.5);
+
+  @media (max-width: 630px) {
+    max-height: max-content;
+    overflow-y: scroll;
+    padding: 2rem 0;
+  }
+`;
+
 export const StyledRemoveModal = styled.div`
   display: flex;
   flex-direction: column;
@@ -8,13 +23,22 @@ export const StyledRemoveModal = styled.div`
   max-height: 50rem;
   border-radius: 0.5rem;
 
+  @media (max-width: 630px) {
+    max-height: max-content;
+    width: 90%;
+  }
+
   header {
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: space-between;
     padding: 0.8rem 1rem;
     background-color: var(--secondary-color);
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
+
+    h3 {
+      color: #ffffff;
+    }
 
     button {
       background-color: var(--secondary-color);
