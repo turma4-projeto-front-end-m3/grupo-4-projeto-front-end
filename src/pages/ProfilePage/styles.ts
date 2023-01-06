@@ -53,6 +53,8 @@ export const MainContainer = styled.main`
 
     width: 690px;
 
+    min-height: 436px;
+
     & > div {
         display: flex;
         justify-content: space-between;
