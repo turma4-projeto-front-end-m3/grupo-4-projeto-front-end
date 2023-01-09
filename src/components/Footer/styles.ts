@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
-    position: relative;
+    position: absolute;
     bottom: 0;
     left: 0;
 

@@ -1,12 +1,12 @@
-import { Header } from "../../components/Header/styles";
+import { HeaderContainer } from "../../components/Header/styles";
 export const HomePage = () => {
     return (
         <>
-        <Header>
+        <HeaderContainer>
             <nav>
                 
             </nav>
-        </Header>
+        </HeaderContainer>
         <h1>HomePage</h1>
         </>
     )

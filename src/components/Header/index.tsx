@@ -9,7 +9,6 @@ export const Header = () => {
         <HeaderContainer>
             <nav>
                 <img src={Logo} />
-
                 <div>
                     <ProfileImg src={ProfileImage} alt="Foto de perfil"/>
                     <LogoutImg src={Logout} alt="Logout" />
