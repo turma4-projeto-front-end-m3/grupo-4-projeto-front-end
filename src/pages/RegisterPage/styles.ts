@@ -28,7 +28,6 @@ export const MainStyle = styled.main`
     background-color: var(--light-gray);
 
     width: 100vw;
-    height: 100vh;
 
     display: flex;
     align-items: center;
@@ -55,6 +54,8 @@ export const MainStyle = styled.main`
     }
 
     @media (min-width: 900px) {
+        height: 100vh;
+        
         .sectionDir { 
             flex-direction: column-reverse;
             align-items: center;
