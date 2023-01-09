@@ -19,6 +19,10 @@ export const ProfilePage = () => {
           <FilterBtn>Massas</FilterBtn>
           <FilterBtn>Carnes</FilterBtn>
           <FilterBtn>Doces</FilterBtn>
+          <FilterBtn>Todos</FilterBtn>
+          <FilterBtn>Massas</FilterBtn>
+          <FilterBtn>Carnes</FilterBtn>
+          <FilterBtn>Doces</FilterBtn>
         </div>
 
         <InputSearchContainer>

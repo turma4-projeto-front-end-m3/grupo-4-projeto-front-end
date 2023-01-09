@@ -8,8 +8,12 @@ export const Header = () => {
     return(
         <HeaderContainer>
             <nav>
-                <img src={Logo} />
-                <div>
+                <div className="logo_container">
+                    <img src={Logo} />
+                    <h1>MyRecipes</h1>
+                </div>
+
+                <div className="profile_container">
                     <ProfileImg src={ProfileImage} alt="Foto de perfil"/>
                     <LogoutImg src={Logout} alt="Logout" />
                 </div>
