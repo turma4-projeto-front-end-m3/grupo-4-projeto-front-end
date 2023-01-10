@@ -1,10 +1,24 @@
-import { HeaderContainer, LogoutImg, ProfileImg } from "./styles";
+import { HeaderContainer, ProfileImg } from "./styles";
 
 import Logo from "../../assets/Logo.svg";
-import Logout from "../../assets/logout.svg";
+import { FiLogOut } from "react-icons/fi"
 import ProfileImage from "../../assets/img_perfil_default.png"
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 export const Header = () => {
+
+    const { setUser } = useContext(UserContext)
+
+    const navigate = useNavigate()
+
+    const logout = () => {
+        setUser(null)
+        localStorage.clear()
+        navigate("/")
+    }
+    
     return(
         <HeaderContainer>
             <nav>
@@ -15,7 +29,7 @@ export const Header = () => {
 
                 <div className="profile_container">
                     <ProfileImg src={ProfileImage} alt="Foto de perfil"/>
-                    <LogoutImg src={Logout} alt="Logout" />
+                    <FiLogOut className="logoutImg" onClick={logout} />
                 </div>
             </nav>
         </HeaderContainer>
