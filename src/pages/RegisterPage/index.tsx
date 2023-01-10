@@ -60,7 +60,7 @@ export const RegisterPage = () => {
 
               <label>Foto de Perfil</label>
               <input type="text" placeholder="Url da imagem" {...register("img")}/>
-              {errors.img && <p>{errors.img.message}</p>}
+              {errors.img && <ErrorMessage>{errors.img.message}</ErrorMessage>}
 
               <label>Email</label>
               <input
