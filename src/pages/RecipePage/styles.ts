@@ -5,7 +5,6 @@ export const RecipePageStyles = styled.div`
 `
 
 export const MainRecipeStyles = styled.main`
-  height: calc(100vh - 207px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +16,7 @@ export const ContainerRecipe = styled.div`
   max-height: 650px;
   width: 80%;
   height: 100%;
-  background-color: #FFFFFF;
+  background-color: var(--white);
   border: 1px solid var(--secondary-color);
   border-radius: 8px;
   display: flex;
@@ -29,7 +28,6 @@ export const ContainerRecipe = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
     width: 100%;
   }
 
@@ -75,7 +73,7 @@ export const ContainerRecipe = styled.div`
       text-align: center;
       background-color: var(--secondary-color);
       border-radius: 8px;
-      color: #FFFFFF;
+      color: var(--white);
     }
   }
 
