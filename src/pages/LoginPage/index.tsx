@@ -62,7 +62,7 @@ export const LoginPage = () => {
               />
               {errors.password && <p>{errors.password.message}</p>}
 
-              <Link to="/registerPage" className="forgotPass">
+              <Link to="/register" className="forgotPass">
                 Esqueceu sua senha?
               </Link>
 
@@ -73,7 +73,7 @@ export const LoginPage = () => {
 
             <div className="divRegister">
               <p>Não possui uma conta?</p>
-              <Link to="/registerPage">Cadastre-se!</Link>
+              <Link to="/register">Cadastre-se!</Link>
             </div>
           </section>
         </div>

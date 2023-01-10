@@ -74,7 +74,7 @@ export const RegisterPage = ( ) => {
 
                         <div className="divLogin">
                             <p>Você já possui uma conta?</p>
-                            <Link to="/loginPage">Faça login!</Link>
+                            <Link to="/login">Faça login!</Link>
                         </div>
                      </section>
                 </div>

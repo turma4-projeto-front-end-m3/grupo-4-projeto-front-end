@@ -46,7 +46,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       const response = await api.post("register", data);
 
       toast.success("Conta criada com sucesso!");
-      navegate("/loginPage");
+      navegate("/login");
     } catch (error) {
       if (axios.isAxiosError(error)) {
         toast.error("Cadastro não efetuado, tente novamente");
@@ -68,7 +68,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
       setUser(response.data);
 
       toast.success("Login realizado com sucesso!");
-      navegate("/homePage");
+      navegate("/home");
     } catch (error) {
       if (axios.isAxiosError(error)) {
         toast.error("Login não efetuado, tente novamente");
