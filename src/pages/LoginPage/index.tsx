@@ -3,10 +3,11 @@ import Logo from "../../assets/logo.svg";
 import { ContainerStyle, FormLogin, MainStyle } from "./styles";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { iLoginData, UserContext } from "../../contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
 import { LoginFormSchema } from "./LoginFormSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { iLoginData } from "../../contexts/UserContext/types";
 
 export const LoginPage = () => {
   const {
