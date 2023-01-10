@@ -28,6 +28,12 @@ export const HeaderContainer = styled.header`
         gap: 30px;
     }
 
+    .logoutImg {
+        width: 30px;
+        height: 30px;
+        color: white;
+    }
+
     @media (max-width: 975px) {
         padding: 12px 50px;
     }
@@ -57,8 +63,4 @@ export const ProfileImg = styled.img`
     object-fit: cover;
 
     border-radius: 50%;
-`
-export const LogoutImg = styled.img`
-    width: 40px;
-    height: 42px;
 `
