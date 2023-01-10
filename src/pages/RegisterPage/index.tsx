@@ -1,4 +1,4 @@
-import { ContainerStyle, FormRegister, MainStyle } from "./styles";
+import { ContainerStyle, ErrorMessage, FormRegister, MainStyle } from "./styles";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import { AiOutlineArrowRight } from "react-icons/ai";
@@ -15,6 +15,7 @@ export const RegisterPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<iRegisterData>({
+    mode: "onBlur",
     resolver: yupResolver(RegisterFormSchema),
   });
   const { registerUser } = useContext(UserContext);
@@ -46,7 +47,7 @@ export const RegisterPage = () => {
 
           <section className="sectionFormRegister">
             <h2>Cadastre-se</h2>
-            <p>Vamos ajudá-lo a criar sua conta, é rapido e fácil!</p>
+            <p className="descFormRegister">Vamos ajudá-lo a criar sua conta, é rapido e fácil!</p>
 
             <FormRegister onSubmit={handleSubmit(submitRegister)}>
               <label>Nome</label>
@@ -55,7 +56,7 @@ export const RegisterPage = () => {
                 placeholder="Digite seu nome"
                 {...register("username")}
               />
-              {errors.username && <p>{errors.username.message}</p>}
+              {errors.username && <ErrorMessage>{errors.username.message}</ErrorMessage>}
 
               <label>Foto de Perfil</label>
               <input type="text" placeholder="Url da imagem" />
@@ -66,7 +67,7 @@ export const RegisterPage = () => {
                 placeholder="Digite seu email"
                 {...register("email")}
               />
-              {errors.email && <p>{errors.email.message}</p>}
+              {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
 
               <label>Senha</label>
               <input
@@ -74,7 +75,7 @@ export const RegisterPage = () => {
                 placeholder="Digite sua senha"
                 {...register("password")}
               />
-              {errors.password && <p>{errors.password.message}</p>}
+              {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
 
               <label>Confirme sua senha</label>
               <input
@@ -82,7 +83,7 @@ export const RegisterPage = () => {
                 placeholder="Digite sua senha novamente"
                 {...register("retypePassword")}
               />
-              {errors.retypePassword && <p>{errors.retypePassword.message}</p>}
+              {errors.retypePassword && <ErrorMessage>{errors.retypePassword.message}</ErrorMessage>}
 
               <button className="btnRegister">
                 Cadastrar <AiOutlineArrowRight />{" "}

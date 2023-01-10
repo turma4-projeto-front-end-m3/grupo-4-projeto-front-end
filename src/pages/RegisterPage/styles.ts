@@ -130,7 +130,7 @@ export const MainStyle = styled.main`
         @media (min-width: 900px) {
             border: 1px solid var(--secondary-color);
             background-color: #FFFF;
-            height: 590px;
+           
         }
 
 
@@ -146,7 +146,7 @@ export const MainStyle = styled.main`
             font-weight: 800;
         }
 
-        p {
+        .descFormRegister {
             color: var(--secondary-color);
             font-weight: 400;
             font-size: 13px;
@@ -216,4 +216,12 @@ export const FormRegister = styled.form`
         border-radius: 10px;
     }
 
+`
+
+export const ErrorMessage = styled.p`
+    margin-bottom: 5px;
+
+    color: red;
+    font-size: 10px;
+    font-weight: 700;
 `
