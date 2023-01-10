@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { iRegisterData, UserContext } from "../../contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext";
 import { useContext } from "react";
 import { RegisterFormSchema } from "./RegisterFormSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { iRegisterData } from "../../contexts/UserContext/types";
 
 export const RegisterPage = () => {
   const {
