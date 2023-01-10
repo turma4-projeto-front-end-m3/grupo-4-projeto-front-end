@@ -45,6 +45,7 @@ export const Button = styled.button`
     background-color: var(--secondary-color);
     
     :hover{
+        border: 1px solid var(--secondary-color);
         color: var(--hover-color);
         background-color: var(--white);
     }

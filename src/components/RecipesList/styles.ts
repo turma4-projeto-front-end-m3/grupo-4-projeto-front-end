@@ -123,7 +123,7 @@ export const RecipeBtn = styled.button<iButtonProps>`
                     background-color: #ECA09B;
 
                     &:hover {
-                        background-color: var(--background-color);
+                        background-color: #F2463D;
                     }
                 `
         }

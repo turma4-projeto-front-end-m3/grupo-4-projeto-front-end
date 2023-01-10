@@ -151,6 +151,7 @@ export const MainStyle = styled.main`
              text-align: center;
 
         p {
+            margin-top: 15px;
             font-weight: 400;
             font-size: 13px;
         }

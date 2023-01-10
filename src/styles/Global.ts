@@ -10,8 +10,8 @@ export const Global = createGlobalStyle`
     }
 
     :root {
-        --primary-color: #0C8346;
-        --secondary-color: #0D5D56;
+        --primary-color: #6BCA3C;
+        --secondary-color: #3B701F;
         --hover-color: #329F5B;
 
         --background-color: #E5C2C0;
@@ -25,7 +25,7 @@ export const Global = createGlobalStyle`
         --alert: #b90000;
     }
 
-    button {
+    button, a {
         cursor: pointer;
     }
 `;

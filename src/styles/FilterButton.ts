@@ -5,16 +5,22 @@ export const FilterBtn = styled.button`
 
     padding: 7px 20px;
 
-    border: none;
+    border: 1px solid var(--secondary-color);
     border-radius: 10px;
 
     font-weight: 600;
     font-size: 11px;
-    color: #71B1A1;
+    color: var(--secondary-color);
 
     background-color: var(--white);
 
     &:focus {
+        color: var(--white);
+
+        background-color: var(--secondary-color);
+    }
+
+    &:hover {
         color: var(--white);
 
         background-color: var(--secondary-color);
