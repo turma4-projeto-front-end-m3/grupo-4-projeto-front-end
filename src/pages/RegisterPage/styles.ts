@@ -124,6 +124,7 @@ export const MainStyle = styled.main`
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 10px;
 
 
         @media (min-width: 900px) {

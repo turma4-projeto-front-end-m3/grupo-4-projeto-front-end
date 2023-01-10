@@ -89,7 +89,7 @@ export const ContainerRecipe = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: rgba(13, 93, 86, 0.74);
+      background-color: var(--secondary-color);
       border-radius: 8px;
     }
 
