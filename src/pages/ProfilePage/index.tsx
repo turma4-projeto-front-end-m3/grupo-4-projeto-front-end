@@ -6,10 +6,15 @@ import { FilterContainer, InputSearchContainer, MainContainer } from "./styles";
 import { Header } from "../../components/Header";
 import { RecipesList } from "../../components/RecipesList";
 import { Footer } from "../../components/Footer";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RecipesContext } from "../../contexts/RecipesContext";
+import { RecipeModal } from "../../components/RecipeModal";
+import { RemoveRecipeModal } from "../../components/RemoveRecipeModal";
 
 export const ProfilePage = () => {
+  const [editModal, setEditModal] = useState<boolean>(false);
+  const [deleteModal, setDeleteModal] = useState<boolean>(false);
+
   const { userRecipesList, getUserProfile } = useContext(RecipesContext);
 
   useEffect(() => {
@@ -18,6 +23,10 @@ export const ProfilePage = () => {
 
   return (
     <>
+      {editModal && (
+        <RecipeModal modalTitle="Criar Receita" setEditModal={setEditModal} />
+      )}
+      {deleteModal && <RemoveRecipeModal />}
       <Header />
 
       <FilterContainer>
@@ -39,7 +48,7 @@ export const ProfilePage = () => {
         <div>
           <h2>Minhas Receitas</h2>
 
-          <button>
+          <button onClick={() => setEditModal(true)}>
             <img src={AddIcon} alt="Icone de adicionar" />
           </button>
         </div>
