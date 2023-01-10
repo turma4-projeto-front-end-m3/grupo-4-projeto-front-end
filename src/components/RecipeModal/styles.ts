@@ -6,7 +6,7 @@ export const StyledRecipeModalBackground = styled.div`
   justify-content: center;
   height: 100vh;
   width: 100%;
-  background-color: rgb(0, 0, 0, 0.5);
+  background-color: rgba(107, 202, 60, 0.38);
 
   @media (max-width: 630px) {
     height: max-content;

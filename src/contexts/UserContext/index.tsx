@@ -2,38 +2,16 @@ import axios from "axios";
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { api } from "../services/api";
+import { api } from "../../services/api";
+import {
+  iLoginData,
+  iRegisterData,
+  iUser,
+  iUserProvider,
+  iUserProviderProps,
+} from "./types";
 
 export const UserContext = createContext({} as iUserProvider);
-
-interface iUserProviderProps {
-  children: React.ReactNode;
-}
-
-interface iUserProvider {
-  user: iUser | null;
-  loginUser: (data: iLoginData) => Promise<void>;
-  registerUser: (data: iRegisterData) => Promise<void>;
-}
-
-export interface iUser {
-  id: string;
-  username: string;
-  email: string;
-}
-
-export interface iLoginData {
-  email: string;
-  password: string;
-}
-
-export interface iRegisterData {
-  username: string;
-  img: string;
-  email: string;
-  password: string;
-  retypePassword: string;
-}
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
   const [user, setUser] = useState<iUser | null>(null);
@@ -64,7 +42,7 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
 
       localStorage.clear();
       localStorage.setItem("@token", response.data.accessToken);
-      localStorage.setItem("@UserId",JSON.stringify(response.data.user.id));
+      localStorage.setItem("@UserId", JSON.stringify(response.data.user.id));
       setUser(response.data);
 
       toast.success("Login realizado com sucesso!");
