@@ -218,3 +218,11 @@ export const FormLogin = styled.form`
 
 
 `
+
+export const ErrorMessage = styled.p`
+    margin-bottom: 5px;
+
+    color: red;
+    font-size: 10px;
+    font-weight: 700;
+`
