@@ -6,9 +6,16 @@ import { FilterContainer, InputSearchContainer, MainContainer } from "./styles";
 import { Header } from "../../components/Header";
 import { RecipesList } from "../../components/RecipesList";
 import { Footer } from "../../components/Footer";
-
+import { useContext, useEffect } from "react";
+import { RecipesContext } from "../../contexts/RecipesContext";
 
 export const ProfilePage = () => {
+  const { userRecipesList, getUserProfile } = useContext(RecipesContext);
+
+  useEffect(() => {
+    getUserProfile();
+  }, []);
+
   return (
     <>
       <Header />
@@ -33,11 +40,11 @@ export const ProfilePage = () => {
           <h2>Minhas Receitas</h2>
 
           <button>
-            <img src={AddIcon} alt="Icone de adicionar"/>
+            <img src={AddIcon} alt="Icone de adicionar" />
           </button>
         </div>
 
-        <RecipesList />
+        <RecipesList array={userRecipesList} onProfilePage={true} />
       </MainContainer>
 
       <Footer />
