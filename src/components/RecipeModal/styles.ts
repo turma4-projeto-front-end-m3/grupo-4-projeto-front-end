@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const StyledRecipeModalBackground = styled.div`
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100%;
   background-color: rgba(107, 202, 60, 0.38);
+  z-index: 999;
 
   @media (max-width: 630px) {
     height: max-content;

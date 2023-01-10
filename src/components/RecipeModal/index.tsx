@@ -5,13 +5,21 @@ import {
   StyledRecipeModalBackground,
 } from "./styles";
 
-export const RecipeModal = () => {
+interface iRecipeModalProps {
+  modalTitle: string;
+  setEditModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const RecipeModal = ({
+  modalTitle,
+  setEditModal,
+}: iRecipeModalProps) => {
   return (
     <StyledRecipeModalBackground>
       <StyledRecipeModal>
         <header>
-          <h3>Editar Receita</h3>
-          <button>X</button>
+          <h3>{modalTitle}</h3>
+          <button onClick={() => setEditModal(false)}>X</button>
         </header>
         <form>
           <div>
