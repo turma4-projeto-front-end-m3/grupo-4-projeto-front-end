@@ -18,7 +18,7 @@ export const ContainerRecipe = styled.div`
   width: 80%;
   height: 100%;
   background-color: #FFFFFF;
-  border: 1px solid #0D5D569C;
+  border: 1px solid var(--secondary-color);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -73,7 +73,7 @@ export const ContainerRecipe = styled.div`
       font-size: 15px;
       line-height: 22px;
       text-align: center;
-      background-color: #0D5D56;
+      background-color: var(--secondary-color);
       border-radius: 8px;
       color: #FFFFFF;
     }
@@ -91,7 +91,7 @@ export const ContainerRecipe = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: rgba(13, 93, 86, 0.74);
+      background-color: var(--secondary-color);
       border-radius: 8px;
     }
 
@@ -132,7 +132,7 @@ export const ContainerRecipe = styled.div`
     width: 281px;
     height: 299px;
     background: #E8E8E8;
-    border: 1px solid #0D5D56;
+    border: 1px solid var(--secondary-color);
     border-radius: 8px;
     padding: 15px 20px;
 

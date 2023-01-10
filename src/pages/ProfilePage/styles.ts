@@ -8,7 +8,7 @@ export const FilterContainer = styled.div`
 
     padding: 30px 135px;
 
-    background-color: #0D5D5661;
+    background-color: rgba(107, 202, 60, 0.38);
 
     & > div {
         display: flex;
@@ -112,14 +112,16 @@ export const MainContainer = styled.main`
         width: 32px;
         height: 32px;
 
-        border: none;
+        border: 1px solid var(--secondary-color);
         border-radius: 8px;
 
         background-color: var(--secondary-color);
     }
 
     & > div > button:hover {
-        background-color: var(--hover-color);
+        color: var(--whiter);
+        background-color: var(--primary-color);
+
     }
 
     @media (max-width: 975px) {
