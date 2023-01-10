@@ -10,7 +10,15 @@ import { FilterBtn } from "../../styles/FilterButton";
 import { InputSearchContainer } from "../ProfilePage/styles";
 import { Footer } from "../../components/Footer";
 import { RecipesList } from "../../components/RecipesList";
+import { useContext, useEffect } from "react";
+import { RecipesContext } from "../../contexts/RecipesContext";
 export const HomePage = () => {
+  const { recipeList, getAllRecipes } = useContext(RecipesContext);
+
+  useEffect(() => {
+    console.log(recipeList);
+    getAllRecipes();
+  }, []);
   return (
     <>
       <Header />
@@ -30,8 +38,7 @@ export const HomePage = () => {
           </HomeFilterContainer>
           <InputSearchContainer></InputSearchContainer>
         </div>
-        <RecipesList />
-        <RecipesList />
+        <RecipesList array={recipeList} onProfilePage={false} />
       </HomeContainer>
       <Footer />
     </>
