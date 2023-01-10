@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.svg";
-import { ContainerStyle, FormLogin, MainStyle } from "./styles";
+import { ContainerStyle, ErrorMessage, FormLogin, MainStyle } from "./styles";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { UserContext } from "../../contexts/UserContext";
@@ -15,6 +15,7 @@ export const LoginPage = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<iLoginData>({
+    mode: "onBlur",
     resolver: yupResolver(LoginFormSchema),
   });
   const { loginUser } = useContext(UserContext);
@@ -53,7 +54,7 @@ export const LoginPage = () => {
                 placeholder="Digite seu email..."
                 {...register("email")}
               />
-              {errors.email && <p>{errors.email.message}</p>}
+              {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
 
               <label htmlFor="">Senha</label>
               <input
@@ -61,7 +62,7 @@ export const LoginPage = () => {
                 placeholder="Digite sua senha..."
                 {...register("password")}
               />
-              {errors.password && <p>{errors.password.message}</p>}
+              {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
 
               <Link to="/register" className="forgotPass">
                 Esqueceu sua senha?
