@@ -7,6 +7,10 @@ export const RegisterFormSchema: SchemaOf<iRegisterData> = yup.object().shape({
     .string()
     .required("O nome é obrigatório!")
     .min(10, "O nome precisa ter no mínimo 10 caracteres"),
+  
+  img: yup
+  .string()
+  .required("A URL é necessária!"),
 
   email: yup
     .string()
