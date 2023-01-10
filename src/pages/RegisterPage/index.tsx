@@ -58,7 +58,8 @@ export const RegisterPage = () => {
               {errors.username && <p>{errors.username.message}</p>}
 
               <label>Foto de Perfil</label>
-              <input type="text" placeholder="Url da imagem" />
+              <input type="text" placeholder="Url da imagem" {...register("img")}/>
+              {errors.img && <p>{errors.img.message}</p>}
 
               <label>Email</label>
               <input
