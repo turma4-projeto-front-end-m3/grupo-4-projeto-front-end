@@ -130,10 +130,19 @@ export const RecipeModal = ({
             <label htmlFor="category">Categoria</label>
             <select id="category" {...register("category")}>
               <option hidden>Selecione a categoria</option>
-              <option>Massas</option>
               <option>Carnes</option>
+              <option>Aves</option>
+              <option>Peixes</option>
+              <option>Frutos do Mar</option>
               <option>Saladas</option>
-              <option>Sobremesas</option>
+              <option>Molhos</option>
+              <option>Sopas</option>
+              <option>Massas</option>
+              <option>Bebidas</option>
+              <option>Doces e Sobremesas</option>
+              <option>Conservas</option>
+              <option>Panificação</option>
+              <option>Vegano</option>
             </select>
           </div>
           <div>
