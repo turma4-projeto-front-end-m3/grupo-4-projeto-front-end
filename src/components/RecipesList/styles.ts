@@ -16,9 +16,9 @@ export const RecipeItem = styled.li`
     width: 153px;
     height: 190px;
 
-    border: 1px solid #0D5D569C;
+    border: 1px solid var(--secondary-color);
     border-radius: 8px;
-    border-top: 10px solid #0D5D569C;
+    border-top: 10px solid var(--secondary-color);
 
     padding: 10px;
 
@@ -120,10 +120,10 @@ export const RecipeBtn = styled.button<iButtonProps>`
                 `
             case "pink":
                 return css`
-                    background-color: #ECA09B;
+                    background-color: #F2463D;
 
                     &:hover {
-                        background-color: #F2463D;
+                        background-color: #ECA09B;
                     }
                 `
         }
