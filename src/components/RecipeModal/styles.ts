@@ -95,9 +95,36 @@ export const StyledRecipeModal = styled.div`
     section {
       width: 100%;
       height: 20%;
+      max-height: 20%;
+
       border-radius: 0.5rem;
+
       background-color: #ffffff;
+
       margin-bottom: 2.5rem;
+
+      overflow-y: auto;
+
+      ul {
+        list-style: none;
+
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        padding: 10px 5px;
+      }
+
+      li {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        width: 95%;
+
+        border: 1px solid var(--gray);
+        border-radius: 5px;
+      }
 
       @media (max-width: 630px) {
         height: 5rem;
@@ -108,6 +135,31 @@ export const StyledRecipeModal = styled.div`
   .miniCont {
     display: flex;
     flex-direction: row;
+
+    select {
+      width: 60px;
+
+      padding: 0;
+    }
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 30px;
+
+      border: none;
+      border-radius: 0.5rem;
+
+      padding: 0.5rem;
+
+      background-color: var(--white);
+    }
+
+    button:hover {
+      background-color: var(--gray);
+    }
   }
 
   .smallInput {
