@@ -17,6 +17,37 @@ export const HomeContainer = styled.main`
         width: 100%;
     }
 
+    .divInputSearch{
+        position: relative;
+
+        input {
+            width: 270px;
+            height: 40px;
+
+            border: 1.3px solid var(--light-gray);
+            border-radius: 10px;
+
+            padding: 10px 20px 10px 30px;
+        }
+
+        input:focus {
+            outline: 1.3px solid var(--secondary-color);
+        }
+
+        img {
+            filter: invert(60%);
+            position: absolute;
+            left: 10px;
+            bottom: 13px;
+        }
+
+        @media (max-width: 475px) {
+            input {
+            width: 100%;
+            }
+        }
+    }
+
     @media(max-width: 425px){
         padding: 0 30px;
 

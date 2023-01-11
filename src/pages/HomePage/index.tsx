@@ -41,10 +41,12 @@ export const HomePage = () => {
           <HomePublish>
             <h1>Deseja Publicar Uma Receita?</h1>
             <Button>+</Button>
-            <InputSearchContainer>
+            
+            <div className="divInputSearch">
               <input onChange={(e) => {setFilter(e.target.value)}} type="text" placeholder="Pesquisar por..." />
               <img src={SearchIcon} alt="Icone de pesquisa" />
-            </InputSearchContainer>
+            </div>
+
           </HomePublish>
           <HomeFilterContainer>
             <FilterList categories={categories} setFilter={setFilter} />
