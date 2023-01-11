@@ -17,6 +17,22 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
     []
   );
 
+  const categories = [
+    "Todos",
+    "Carnes",
+    "Aves",
+    "Peixes e Frutos do Mar",
+    "Saladas",
+    "Molhos",
+    "Sopas",
+    "Massas",
+    "Bebidas",
+    "Doces e Sobremesas",
+    "Conservas",
+    "Panificação",
+    "Vegano",
+  ];
+
   const getAllRecipes = async () => {
     try {
       const response = await api.get("/recipes");
@@ -36,7 +52,6 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
       const response = await api.get(`/users/${getUserId}?_embed=recipes`);
       setUserInfo(response.data);
       setUserRecipesList(response.data.recipes);
-      console.log(response.data.recipes);
     } catch (error) {
       console.log(error);
     }
@@ -44,14 +59,11 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
 
   const postCreateRecipe = async (data: iCreateRecipeData) => {
     try {
-
       const response = await api.post("/recipes", data);
-      console.log(response);
     } catch (error) {
-
       console.log(error);
     }
-  }
+  };
 
   return (
     <RecipesContext.Provider
@@ -61,7 +73,7 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
         userRecipesList,
         getAllRecipes,
         getUserProfile,
-        postCreateRecipe
+        postCreateRecipe,
       }}
     >
       {children}

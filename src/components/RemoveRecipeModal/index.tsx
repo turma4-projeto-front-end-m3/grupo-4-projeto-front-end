@@ -2,13 +2,19 @@ import { StyledRemoveModal, StyledRemoveRecipeModalBackground } from "./styles";
 import { MdDeleteSweep } from "react-icons/md";
 import { BsCheck2All } from "react-icons/bs";
 
-export const RemoveRecipeModal = () => {
+interface iRemoveRecipeModalProps {
+  setDeleteModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const RemoveRecipeModal = ({
+  setDeleteModal,
+}: iRemoveRecipeModalProps) => {
   return (
     <StyledRemoveRecipeModalBackground>
       <StyledRemoveModal>
         <header>
           <h3>Excluir</h3>
-          <button>X</button>
+          <button onClick={() => setDeleteModal(false)}>X</button>
         </header>
         <div>
           <h2>Tem certeza que deseja excluir sua receita?</h2>

@@ -26,7 +26,7 @@ export const ProfilePage = () => {
       {editModal && (
         <RecipeModal modalTitle="Criar Receita" setEditModal={setEditModal} />
       )}
-      {deleteModal && <RemoveRecipeModal />}
+      {deleteModal && <RemoveRecipeModal setDeleteModal={setDeleteModal} />}
       <Header />
 
       <FilterContainer>
@@ -53,7 +53,11 @@ export const ProfilePage = () => {
           </button>
         </div>
 
-        <RecipesList array={userRecipesList} onProfilePage={true} />
+        <RecipesList
+          array={userRecipesList}
+          onProfilePage={true}
+          setDeleteModal={setDeleteModal}
+        />
       </MainContainer>
 
       <Footer />

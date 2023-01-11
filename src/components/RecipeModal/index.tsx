@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useContext, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { modalFormSchema } from "./ModalFormSchema";
+import { modalFormSchema } from "./modalFormSchema";
 import {
   StyledCancelButton,
   StyledGreenButton,
@@ -9,7 +9,7 @@ import {
   StyledRecipeModalBackground,
 } from "./styles";
 
-import { BsFillTrashFill } from "react-icons/bs"
+import { BsFillTrashFill } from "react-icons/bs";
 import { RecipesContext } from "../../contexts/RecipesContext";
 
 interface iRecipeModalProps {
@@ -30,33 +30,53 @@ interface iModalFormData {
 }
 
 interface iIngredients {
-  ingredientName: string,
+  ingredientName: string;
   qty: string;
   unity: string;
 }
 
-export const RecipeModal = ({ modalTitle, setEditModal }: iRecipeModalProps) => {
+export const RecipeModal = ({
+  modalTitle,
+  setEditModal,
+}: iRecipeModalProps) => {
+  const { postCreateRecipe, getUserProfile } = useContext(RecipesContext);
 
-  const { postCreateRecipe } = useContext(RecipesContext)
-
-  const [ingredientsList, setIngredientsList] = useState<iIngredients[] | null>([]);
+  const [ingredientsList, setIngredientsList] = useState([] as iIngredients[]);
   const [ingredient, setIngredient] = useState<iIngredients>({
     ingredientName: "",
     qty: "",
-    unity: ""
-  })
+    unity: "",
+  });
 
-  const { register, handleSubmit, formState: { errors } } = useForm<iModalFormData>({
-    resolver: yupResolver(modalFormSchema)
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<iModalFormData>({
+    resolver: yupResolver(modalFormSchema),
   });
 
   const submit: SubmitHandler<iModalFormData> = (data: iModalFormData) => {
     const id = Number(localStorage.getItem("@UserId"));
 
-    const newData = {...data, ingredients: ingredientsList, userId: id};
-    console.log(newData);
+    const newData = { ...data, ingredients: ingredientsList, userId: id };
     postCreateRecipe(newData);
-  }
+    getUserProfile();
+    setEditModal(false);
+  };
+
+  const addIngredients = () => {
+    {
+      const newIngredientsList = [...ingredientsList, ingredient];
+      setIngredientsList(newIngredientsList);
+      setIngredient({
+        ingredientName: "",
+        qty: "",
+        unity: "",
+      });
+      console.log(ingredientsList);
+    }
+  };
 
   return (
     <StyledRecipeModalBackground>
@@ -68,22 +88,48 @@ export const RecipeModal = ({ modalTitle, setEditModal }: iRecipeModalProps) => 
         <form onSubmit={handleSubmit(submit)}>
           <div>
             <label htmlFor="title">Título</label>
-            <input id="title" placeholder="Digite o título..." {...register("recipeName")}/>
+            <input
+              id="title"
+              placeholder="Digite o título..."
+              {...register("recipeName")}
+            />
 
             <label htmlFor="image">Imagem</label>
-            <input id="image" placeholder="Digite o link da imagem..." {...register("recipeImg")}/>
+            <input
+              id="image"
+              placeholder="Digite o link da imagem..."
+              {...register("recipeImg")}
+            />
 
             <label htmlFor="portions">Rendimento</label>
-            <input id="portions" placeholder="Digite o rendimento..." type="number" {...register("portions")}/>
+            <input
+              id="portions"
+              placeholder="Digite o rendimento..."
+              type="number"
+              {...register("portions")}
+              min={1}
+            />
 
             <label htmlFor="prepTime">Tempo de preparo</label>
-            <input id="prepTime" placeholder="Digite o tempo de preparo..." {...register("prepTime")}/>
+            <input
+              id="prepTime"
+              placeholder="Digite o tempo de preparo..."
+              {...register("prepTime")}
+            />
 
             <label htmlFor="rating">Avaliação da receita</label>
-            <input id="rating" placeholder="Digita a avaliação..." type="number" min="1" max="5" {...register("rating")}/>
+            <input
+              id="rating"
+              placeholder="Digita a avaliação..."
+              type="number"
+              min="1"
+              max="5"
+              {...register("rating")}
+            />
 
             <label htmlFor="category">Categoria</label>
             <select id="category" {...register("category")}>
+              <option hidden>Selecione a categoria</option>
               <option>Massas</option>
               <option>Carnes</option>
               <option>Saladas</option>
@@ -97,18 +143,35 @@ export const RecipeModal = ({ modalTitle, setEditModal }: iRecipeModalProps) => 
                 id="ingredients"
                 placeholder="Ingrediente..."
                 className="smallInput"
-                onChange={(event) => setIngredient({...ingredient, ingredientName: event.target.value})}
+                onChange={(event) =>
+                  setIngredient({
+                    ...ingredient,
+                    ingredientName: event.target.value,
+                  })
+                }
                 value={ingredient.ingredientName}
               />
               <input
                 id="ingredients"
                 placeholder="qtd..."
                 className="miniInput"
-                onChange={(event) => setIngredient({...ingredient, qty: event.target.value})}
+                onChange={(event) =>
+                  setIngredient({ ...ingredient, qty: event.target.value })
+                }
                 value={ingredient.qty}
+                type={"number"}
+                min={1}
               />
-              <select id="ingredients" onChange={(event) => setIngredient({...ingredient, unity: event.target.value})} value={ingredient.unity}>
-                <option value="" hidden>Unidade</option>
+              <select
+                id="ingredients"
+                onChange={(event) =>
+                  setIngredient({ ...ingredient, unity: event.target.value })
+                }
+                value={ingredient.unity}
+              >
+                <option value="" hidden>
+                  Unidade
+                </option>
                 <option>mg</option>
                 <option>g</option>
                 <option>Kg</option>
@@ -119,33 +182,49 @@ export const RecipeModal = ({ modalTitle, setEditModal }: iRecipeModalProps) => 
                 <option>colher(es) de sopa</option>
               </select>
 
-              <button onClick={() => {
-                setIngredientsList([...ingredientsList, {...ingredient}]); 
-                setIngredient({
-                  ingredientName: "",
-                  qty: "",
-                  unity: ""
-                })
-              }} type="button">+</button>
+              <button onClick={addIngredients} type="button">
+                +
+              </button>
             </div>
             <section>
               <ul>
-                {ingredientsList && ingredientsList.map(ingredient => (
-                  <li key={ingredientsList.findIndex((element) => element.ingredientName === ingredient.ingredientName)}>
-                    <h4>{ingredient.ingredientName}</h4>
-                    <span>{ingredient.qty}</span>
-                    <span>{ingredient.unity}</span>
+                {ingredientsList &&
+                  ingredientsList.map((ingredient) => (
+                    <li
+                      key={ingredientsList.findIndex(
+                        (element) =>
+                          element.ingredientName === ingredient.ingredientName
+                      )}
+                    >
+                      <h4>{ingredient.ingredientName}</h4>
+                      <span>{ingredient.qty}</span>
+                      <span>{ingredient.unity}</span>
 
-                    <BsFillTrashFill onClick={() => setIngredientsList(ingredientsList.filter((element) => element.ingredientName !== ingredient.ingredientName))}/>
-                  </li>
-                ))}
+                      <BsFillTrashFill
+                        onClick={() =>
+                          setIngredientsList(
+                            ingredientsList.filter(
+                              (element) =>
+                                element.ingredientName !==
+                                ingredient.ingredientName
+                            )
+                          )
+                        }
+                      />
+                    </li>
+                  ))}
               </ul>
             </section>
 
             <label>Modo de Preparo</label>
             <textarea {...register("description")}></textarea>
             <div className="buttonMiniCont">
-              <StyledCancelButton type="button">Cancelar</StyledCancelButton>
+              <StyledCancelButton
+                type="button"
+                onClick={() => setEditModal(false)}
+              >
+                Cancelar
+              </StyledCancelButton>
               <StyledGreenButton type="submit">Salvar</StyledGreenButton>
             </div>
           </div>

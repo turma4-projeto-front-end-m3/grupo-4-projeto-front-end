@@ -117,13 +117,23 @@ export const StyledRecipeModal = styled.div`
 
       li {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
 
         width: 95%;
 
         border: 1px solid var(--gray);
         border-radius: 5px;
+
+        padding: 0 0.3rem;
+
+        svg {
+          cursor: pointer;
+
+          :hover {
+            color: var(--alert);
+          }
+        }
       }
 
       @media (max-width: 630px) {
@@ -203,6 +213,10 @@ export const StyledCancelButton = styled.button`
   border: none;
   border-radius: 0.5rem;
   width: 48%;
+
+  :hover {
+    background-color: #faa0a0;
+  }
 `;
 
 export const StyledGreenButton = styled.button`
@@ -211,8 +225,13 @@ export const StyledGreenButton = styled.button`
   justify-content: center;
   padding: 0.8rem 1rem;
   background-color: var(--secondary-color);
+  opacity: 80%;
   color: #ffffff;
   border: none;
   border-radius: 0.5rem;
   width: 48%;
+
+  :hover {
+    opacity: 100%;
+  }
 `;
