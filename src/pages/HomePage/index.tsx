@@ -29,7 +29,6 @@ export const HomePage = () => {
   )
 
   useEffect(() => {
-    console.log(recipeList);
     getAllRecipes();
   }, []);
   return (

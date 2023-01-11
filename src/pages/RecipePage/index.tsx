@@ -8,77 +8,69 @@ import starIcon from "../../assets/star_icon.svg"
 import timeIcon from "../../assets/time.svg"
 import foodIcon from "../../assets/garfo.png"
 import profileImg from "../../assets/img_perfil_default.png"
+import { useContext } from "react";
+import { RecipesContext } from "../../contexts/RecipesContext";
 
 export const RecipePage = () => {
+
+  const { viewRecipe, userInfo } = useContext(RecipesContext);
+
   return (
     <RecipePageStyles>
       <Header />
       <MainRecipeStyles>
         <ContainerRecipe>
             <div>
-                <img src={imgRecipe} className="imgRecipe" alt="" />
+                <img src={viewRecipe.recipeImg} className="imgRecipe" alt="" />
                 <div>
-                  <h1>Lasanha à Bolonhesa</h1>
+                  <h1>{viewRecipe.recipeName}</h1>
                   <span>
                     <span>
                       <img src={starIcon} alt="" />
-                      <p>5.0</p>
+                      <p>{viewRecipe.rating}</p>
                     </span>
-                    <span>Massas</span>
+                    <span>{viewRecipe.category}</span>
                   </span>
                 </div>
-                <div>
-                  <span>
-                    <img src={editIcon} alt="" />
-                  </span>
-                  <span>
-                    <img src={deleteIcon} alt="" />
-                  </span>
-                </div>
+                {viewRecipe.userId === userInfo?.id && (
+                  <div>
+                    <button>
+                      <img src={editIcon} alt="" />
+                    </button>
+                    <button>
+                      <img src={deleteIcon} alt="" />
+                    </button>
+                  </div>
+                )}
             </div>
             <div className="recipeInfo">
               <div>
                 <span>Ingredientes</span>
-                <span>
-                  <p>500 g de massa de lasanha</p> 
-                  <p>500 g de carne moída</p> 
-                  <p>2 caixas de creme de leite</p>
-                  <p>3 colheres de manteiga</p>
-                  <p>3 colheres de farinha de trigo</p>
-                  <p>500 g de presunto</p>
-                  <p>500 g de mussarela</p>
-                  <p>sal a gosto</p>
-                  <p>2 copos de leite</p>
-                  <p>1 cebola ralada</p>
-                  <p>3 colheres de óleo</p>
-                  <p>1 caixa de molho de tomate</p>
-                  <p>3 dentes de alho amassados</p>
-                  <p>1 pacote de queijo ralado</p>
-                </span>
+                <ul>
+                  {viewRecipe.ingredients.map((ingredient) => (
+                    <li key={viewRecipe.ingredients.findIndex((element) => element.ingredientName === ingredient.ingredientName)}>{`${ingredient.qty} ${ingredient.unity} de ${ingredient.ingredientName}`}</li>
+                  ))}
+                </ul>
               </div>
               <div>
                 <span>Modo de preparo</span>
                 <span>
-                  <p> 1 - Cozinhe a massa segundo as orientações do fabricante.</p>
-                  <p>2 - Refogue o alho, a cebola, a carne moída, o molho de tomate, deixe cozinhar por 3 minutos e reserve.</p>
-                  <p> 3 - Derreta a margarina, coloque as 3 colheres de farinha de trigo e mexa.</p>
-                  <p>4- Despeje uma parte do molho à bolonhesa, e monte camadas com a massa, presunto e mussarela.</p>
-                  <p>5 -Finalize com o queijo ralado e leve ao forno alto (220° C), preaquecido, por cerca de 20 minutos.</p>
+                  {viewRecipe.description}
                 </span>
               </div>
               <div className="lastDiv">
                 <span>
-                  <p><img src={timeIcon} alt="" /> Tempo de preparo: 60 min</p>
-                  <p><img src={foodIcon} alt="" /> Rende 1 porção</p>
+                  <p><img src={timeIcon} alt="" /> Tempo de preparo: {viewRecipe.prepTime}</p>
+                  <p><img src={foodIcon} alt="" /> Rende {viewRecipe.portions} porção</p>
                 </span>
                 <div className="cooker">
                   <span>
                     Receita criada por:
                   </span>
                   <span>
-                    Ronaldo Rodrigues
+                    {userInfo?.username}
                   </span>
-                  <img src={profileImg} alt="" />
+                  <img src={userInfo?.imgUrl} alt={userInfo?.username} />
                 </div>
               </div>
             </div>
