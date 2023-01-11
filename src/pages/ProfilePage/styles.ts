@@ -85,7 +85,7 @@ export const InputSearchContainer = styled.div`
 export const MainContainer = styled.main`
   margin: 36px auto;
 
-  width: 690px;
+  width: 925px;
 
   min-height: calc(100vh - 379px);
 
