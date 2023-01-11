@@ -71,6 +71,13 @@ export const HomeFilterContainer = styled.div`
 export const HomePublish = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    flex-direction:row;
+    gap: 10px;
+
+    h1 {
+        font-size: 25px;
+    }
 
     @media(max-width: 425px){
         flex-direction: column;

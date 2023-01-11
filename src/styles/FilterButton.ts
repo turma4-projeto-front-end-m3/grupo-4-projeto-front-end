@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FilterBtn = styled.button`
     height: 31px;
-    width: 25%;
+    min-width: max-content;
     display: flex;
     align-items: center;
     justify-content: center;
