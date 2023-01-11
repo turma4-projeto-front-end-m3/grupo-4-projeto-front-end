@@ -9,7 +9,10 @@ interface iRecipeListProps {
   array: iRecipesList[] | null;
   onProfilePage: boolean;
   setDeleteModal: React.Dispatch<React.SetStateAction<boolean>>;
+<<<<<<< HEAD
+=======
   setRecipeId: React.Dispatch<React.SetStateAction<Number | null>>;
+>>>>>>> 50b7b169ba24984d33fdeb72897482561f167b90
 }
 
 export const RecipesList = ({
