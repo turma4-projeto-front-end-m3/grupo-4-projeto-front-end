@@ -8,7 +8,7 @@ import { iRecipesList } from "../../contexts/RecipesContext/types";
 interface iRecipeListProps {
   array: iRecipesList[] | null;
   onProfilePage: boolean;
-  setDeleteModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setDeleteModal?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const RecipesList = ({

@@ -74,6 +74,7 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
         getAllRecipes,
         getUserProfile,
         postCreateRecipe,
+        categories
       }}
     >
       {children}
