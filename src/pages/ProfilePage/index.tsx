@@ -9,17 +9,27 @@ import { useContext, useEffect, useState } from "react";
 import { RecipesContext } from "../../contexts/RecipesContext";
 import { RecipeModal } from "../../components/RecipeModal";
 import { RemoveRecipeModal } from "../../components/RemoveRecipeModal";
+import { FilterList } from "../../components/FilterList";
 
 export const ProfilePage = () => {
   const [editModal, setEditModal] = useState<boolean>(false);
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const [recipeId, setRecipeId] = useState<Number | null>(null);
+  const [filter, setFilter] = useState("")
 
-  const { userRecipesList, getUserProfile } = useContext(RecipesContext);
+  const { userRecipesList, getUserProfile, categories } = useContext(RecipesContext);
 
   useEffect(() => {
     getUserProfile();
   }, []);
+
+  const filteredProducts = userRecipesList && userRecipesList.filter(
+    (recipe) => (
+        filter === "" ?
+        true :
+        recipe.recipeName.toLowerCase().includes(filter.toLowerCase()) || recipe.category.toLowerCase().includes(filter.toLowerCase())
+    )
+  )
 
   return (
     <>
@@ -36,10 +46,7 @@ export const ProfilePage = () => {
 
       <FilterContainer>
         <div>
-          <FilterBtn>Todos</FilterBtn>
-          <FilterBtn>Massas</FilterBtn>
-          <FilterBtn>Carnes</FilterBtn>
-          <FilterBtn>Doces</FilterBtn>
+          <FilterList categories={categories} setFilter={setFilter}/>
         </div>
 
         <InputSearchContainer>
@@ -59,7 +66,7 @@ export const ProfilePage = () => {
         </div>
 
         <RecipesList
-          array={userRecipesList}
+          array={filteredProducts}
           onProfilePage={true}
           setDeleteModal={setDeleteModal}
           setRecipeId={setRecipeId}
