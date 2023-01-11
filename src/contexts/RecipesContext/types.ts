@@ -52,6 +52,7 @@ export interface iRecipesContext {
   recipeList: iRecipesList[] | null;
   userInfo: iUserInfo | null;
   userRecipesList: iRecipesList[] | null;
+  categories: string[];
   getAllRecipes: () => void;
   getUserProfile: () => void;
   postCreateRecipe: (data: iCreateRecipeData) => void;
