@@ -6,6 +6,7 @@ import ProfileImage from "../../assets/img_perfil_default.png"
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { Link } from "react-router-dom"
 
 export const Header = () => {
 
@@ -23,12 +24,16 @@ export const Header = () => {
         <HeaderContainer>
             <nav>
                 <div className="logo_container">
+                  <Link to="/home">
                     <img src={Logo} />
+                  </Link>  
                     <h1>MyRecipes</h1>
                 </div>
 
                 <div className="profile_container">
-                    <ProfileImg src={ProfileImage} alt="Foto de perfil"/>
+                    <Link to="/profile">
+                        <ProfileImg src={ProfileImage} alt="Foto de perfil"/>
+                    </Link>
                     <FiLogOut className="logoutImg" onClick={logout} />
                 </div>
             </nav>
