@@ -9,6 +9,7 @@ export const MainRecipeStyles = styled.main`
   justify-content: center;
   align-items: center;
   background-color: #E8E8E8;
+  height: calc(100vh - 200px);
 `
 
 export const ContainerRecipe = styled.div`
@@ -185,14 +186,12 @@ export const ContainerRecipe = styled.div`
   }
 
   @media(max-width: 960px) {
-    max-height: 700px;
+    overflow-y: scroll;
 
     .recipeInfo {
       height: 90%;
       display: flex;
       flex-direction: column;
-      overflow-y: scroll;
-      overflow-y: scroll;
       padding-top: 300px;
       gap: 30px;
     }
