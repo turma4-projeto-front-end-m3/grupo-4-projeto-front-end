@@ -17,6 +17,24 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
   const [userRecipesList, setUserRecipesList] = useState<iRecipesList[] | null>(
     []
   );
+  const [viewRecipe, setViewRecipe] = useState<iRecipesList>({
+    recipeName: "",
+    category: "",
+    ingredients: [
+      {
+        ingredientName: "",
+        qty: 0,
+        unity: "",
+      }
+    ],
+    prepTime: "",
+    portions: "",
+    description: "",
+    recipeImg: "",
+    rating: "",
+    userId: 0,
+    id: 0,
+  });
 
   const categories = [
     "Todos",
@@ -39,7 +57,7 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
     try {
       const response = await api.get("/recipes");
       setRecipeList(response.data);
-      console.log(response.data);
+     
     } catch (error) {
       console.log(error);
     }
@@ -78,11 +96,13 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
         recipeList,
         userInfo,
         userRecipesList,
+        categories,
+        viewRecipe,
         getAllRecipes,
         getUserProfile,
         postCreateRecipe,
         deleteRecipe,
-        categories,
+        setViewRecipe,
       }}
     >
       {children}

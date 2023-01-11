@@ -4,6 +4,9 @@ import StarIcon from "../../assets/star_icon.svg";
 import ViewIcon from "../../assets/view_icon.svg";
 import DeleteIcon from "../../assets/delete_icon.svg";
 import { iRecipesList } from "../../contexts/RecipesContext/types";
+import { useContext } from "react";
+import { RecipesContext } from "../../contexts/RecipesContext";
+import { useNavigate } from "react-router-dom";
 
 interface iRecipeListProps {
   array: iRecipesList[] | null;
@@ -18,6 +21,11 @@ export const RecipesList = ({
   setDeleteModal,
   setRecipeId,
 }: iRecipeListProps) => {
+
+  const { setViewRecipe } = useContext(RecipesContext);
+
+  const navigate = useNavigate();
+  
   return (
     <List>
       {array?.map((recipe) => (
@@ -37,7 +45,10 @@ export const RecipesList = ({
             <span>Tempo de preparo: {recipe.prepTime}</span>
 
             <div>
-              <RecipeBtn btnColor="green">
+              <RecipeBtn btnColor="green" onClick={() => {
+                setViewRecipe(recipe);
+                navigate("/recipe");
+              }}>
                 <img src={ViewIcon} alt="Botão de ver receita" />
               </RecipeBtn>
 
