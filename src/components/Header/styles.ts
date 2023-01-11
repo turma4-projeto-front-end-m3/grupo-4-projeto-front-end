@@ -32,6 +32,7 @@ export const HeaderContainer = styled.header`
         width: 30px;
         height: 30px;
         color: white;
+        cursor: pointer;
     }
 
     @media (max-width: 975px) {

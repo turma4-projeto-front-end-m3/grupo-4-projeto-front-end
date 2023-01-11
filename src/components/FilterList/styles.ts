@@ -4,6 +4,7 @@ export const FiltersContainer = styled.div`
     overflow-x: scroll;
     display: flex;
     gap: 10px;
+    padding: 10px 0px 10px 0px;
 
     
     ::-webkit-scrollbar{

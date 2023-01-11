@@ -15,8 +15,6 @@ export const FilterContainer = styled.div`
     align-items: center;
     gap: 11px;
 
-    overflow-x: auto;
-
     max-width: 450px;
     height: 50px;
 
