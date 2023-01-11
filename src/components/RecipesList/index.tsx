@@ -8,13 +8,15 @@ import { iRecipesList } from "../../contexts/RecipesContext/types";
 interface iRecipeListProps {
   array: iRecipesList[] | null;
   onProfilePage: boolean;
-  setDeleteModal?: React.Dispatch<React.SetStateAction<boolean>>;
+  setDeleteModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setRecipeId: React.Dispatch<React.SetStateAction<Number | null>>;
 }
 
 export const RecipesList = ({
   array,
   onProfilePage,
   setDeleteModal,
+  setRecipeId,
 }: iRecipeListProps) => {
   return (
     <List>
@@ -40,7 +42,13 @@ export const RecipesList = ({
               </RecipeBtn>
 
               {onProfilePage && (
-                <RecipeBtn btnColor="pink" onClick={() => setDeleteModal(true)}>
+                <RecipeBtn
+                  btnColor="pink"
+                  onClick={() => {
+                    setDeleteModal(true);
+                    setRecipeId(recipe.id);
+                  }}
+                >
                   <img src={DeleteIcon} alt="Botão de deletar receita" />
                 </RecipeBtn>
               )}
