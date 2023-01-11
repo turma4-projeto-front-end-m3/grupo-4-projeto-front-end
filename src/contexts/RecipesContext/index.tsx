@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { api } from "../../services/api";
 import {
   iChildrenProps,
+  iCreateRecipeData,
   iRecipesContext,
   iRecipesList,
   iUserInfo,
@@ -41,6 +42,17 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
     }
   };
 
+  const postCreateRecipe = async (data: iCreateRecipeData) => {
+    try {
+
+      const response = await api.post("/recipes", data);
+      console.log(response);
+    } catch (error) {
+
+      console.log(error);
+    }
+  }
+
   return (
     <RecipesContext.Provider
       value={{
@@ -49,6 +61,7 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
         userRecipesList,
         getAllRecipes,
         getUserProfile,
+        postCreateRecipe
       }}
     >
       {children}
