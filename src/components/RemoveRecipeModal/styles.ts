@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const StyledRemoveRecipeModalBackground = styled.div`
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100%;
   background-color: rgba(107, 202, 60, 0.38);
+  z-index: 999;
 
   @media (max-width: 630px) {
     max-height: max-content;
@@ -67,9 +69,14 @@ export const StyledRemoveModal = styled.div`
         justify-content: center;
         padding: 0.5rem;
         background-color: var(--secondary-color);
+        opacity: 70%;
         border: none;
         color: #ffffff;
         border-radius: 0.5rem;
+
+        :hover {
+          opacity: 100%;
+        }
       }
 
       .deny {
@@ -82,10 +89,10 @@ export const StyledRemoveModal = styled.div`
         border: none;
         color: #ffffff;
         border-radius: 0.5rem;
-      }
 
-      button:hover {
-        opacity: 80%;
+        :hover {
+          background-color: #faa0a0;
+        }
       }
     }
   }

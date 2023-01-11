@@ -3,16 +3,19 @@ import { List, RecipeBtn, RecipeItem, RecipeItemContent } from "./styles";
 import StarIcon from "../../assets/star_icon.svg";
 import ViewIcon from "../../assets/view_icon.svg";
 import DeleteIcon from "../../assets/delete_icon.svg";
-
-import FoodImage from "../../assets/img_food_default.jfif";
-import { iRecipesList, iUserInfo } from "../../contexts/RecipesContext/types";
+import { iRecipesList } from "../../contexts/RecipesContext/types";
 
 interface iRecipeListProps {
   array: iRecipesList[] | null;
   onProfilePage: boolean;
+  setDeleteModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const RecipesList = ({ array, onProfilePage }: iRecipeListProps) => {
+export const RecipesList = ({
+  array,
+  onProfilePage,
+  setDeleteModal,
+}: iRecipeListProps) => {
   return (
     <List>
       {array?.map((recipe) => (
@@ -37,7 +40,7 @@ export const RecipesList = ({ array, onProfilePage }: iRecipeListProps) => {
               </RecipeBtn>
 
               {onProfilePage && (
-                <RecipeBtn btnColor="pink">
+                <RecipeBtn btnColor="pink" onClick={() => setDeleteModal(true)}>
                   <img src={DeleteIcon} alt="Botão de deletar receita" />
                 </RecipeBtn>
               )}
