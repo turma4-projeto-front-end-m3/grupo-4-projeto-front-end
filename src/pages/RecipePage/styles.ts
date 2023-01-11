@@ -2,34 +2,49 @@ import styled from "styled-components";
 
 export const RecipePageStyles = styled.div`
   height: 100vh;
-`
+`;
 
 export const MainRecipeStyles = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #E8E8E8;
-  height: calc(100vh - 200px);
-`
+  background-color: #e8e8e8;
+  height: max-content;
+  overflow-y: scroll;
+  padding: 2rem 0;
+`;
 
 export const ContainerRecipe = styled.div`
   max-width: 920px;
-  max-height: 650px;
   width: 80%;
-  height: 100%;
+  min-height: 72vh;
+  height: max-content;
   background-color: var(--white);
   border: 1px solid var(--secondary-color);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 5rem;
   padding: 25px;
+
+  @media (max-width: 500px) {
+    width: 95%;
+  }
 
   & div:nth-child(1) {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+
+    img {
+      max-width: 40%;
+      border-radius: 3rem;
+    }
+
+    @media (max-width: 500px) {
+      flex-wrap: wrap;
+    }
   }
 
   & div:nth-child(1) div:nth-child(2) {
@@ -48,7 +63,7 @@ export const ContainerRecipe = styled.div`
     justify-content: center;
     gap: 33px;
     margin-top: 15px;
-    
+
     span:nth-child(1) {
       display: flex;
       justify-content: center;
@@ -57,8 +72,8 @@ export const ContainerRecipe = styled.div`
       width: 46px;
       height: 41px;
       border-radius: 50%;
-      background-color: #FFE1B3;    
-      
+      background-color: #ffe1b3;
+
       p {
         font-size: 10px;
       }
@@ -100,7 +115,7 @@ export const ContainerRecipe = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #ECA09B;
+      background: #eca09b;
       border-radius: 8px;
 
       img {
@@ -110,12 +125,17 @@ export const ContainerRecipe = styled.div`
     }
   }
 
-  .recipeInfo { 
+  .recipeInfo {
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    height: 50%;
+    height: max-content;
+    gap: 1rem;
+
+    @media (max-width: 500px) {
+      padding-top: 2rem;
+    }
 
     img {
       width: 50px;
@@ -123,14 +143,15 @@ export const ContainerRecipe = styled.div`
     }
   }
 
-  .recipeInfo div:nth-child(1), .recipeInfo div:nth-child(2) {
+  .recipeInfo div:nth-child(1),
+  .recipeInfo div:nth-child(2) {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
     width: 281px;
     height: 299px;
-    background: #E8E8E8;
+    background: #e8e8e8;
     border: 1px solid var(--secondary-color);
     border-radius: 8px;
     padding: 15px 20px;
@@ -142,7 +163,7 @@ export const ContainerRecipe = styled.div`
       text-align: center;
       color: #000000;
     }
-    
+
     span:nth-child(2) {
       font-size: 10px;
       line-height: 15px;
@@ -157,7 +178,7 @@ export const ContainerRecipe = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    
+
     & div:nth-child(2) {
       height: 150px;
       background-color: transparent;
@@ -181,18 +202,18 @@ export const ContainerRecipe = styled.div`
     p {
       font-size: 15px;
       line-height: 22px;
-      color: #938E8E;
+      color: #938e8e;
     }
   }
 
-  @media(max-width: 960px) {
+  @media (max-width: 960px) {
     overflow-y: scroll;
 
     .recipeInfo {
       height: 90%;
       display: flex;
       flex-direction: column;
-      padding-top: 300px;
+
       gap: 30px;
     }
 
@@ -216,7 +237,7 @@ export const ContainerRecipe = styled.div`
     & div:nth-child(1) div:nth-child(2) span:nth-child(2) {
       gap: 15px;
       margin-top: 0px;
-      span:nth-child(1) {  
+      span:nth-child(1) {
         width: 45px;
         height: 24px;
       }
@@ -245,4 +266,4 @@ export const ContainerRecipe = styled.div`
       width: 100%;
     }
   }
-`
+`;
