@@ -31,7 +31,7 @@ export interface iUserInfo {
 }
 
 interface iIngredients {
-  ingredientName: string,
+  ingredientName: string;
   qty: string;
   unity: string;
 }
@@ -55,4 +55,5 @@ export interface iRecipesContext {
   getAllRecipes: () => void;
   getUserProfile: () => void;
   postCreateRecipe: (data: iCreateRecipeData) => void;
+  deleteRecipe: (id: Number | null) => void;
 }

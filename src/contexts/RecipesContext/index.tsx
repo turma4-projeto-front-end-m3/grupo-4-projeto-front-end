@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { api } from "../../services/api";
 import {
   iChildrenProps,
@@ -65,6 +66,11 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
     }
   };
 
+  const deleteRecipe = async (id: Number | null) => {
+    await api.delete(`/recipes/${id}`);
+    toast("Receita removida com sucesso!");
+  };
+
   return (
     <RecipesContext.Provider
       value={{
@@ -74,6 +80,7 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
         getAllRecipes,
         getUserProfile,
         postCreateRecipe,
+        deleteRecipe,
       }}
     >
       {children}

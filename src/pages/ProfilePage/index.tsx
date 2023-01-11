@@ -1,6 +1,5 @@
 import SearchIcon from "../../assets/search_icon.svg";
 import AddIcon from "../../assets/add_icon.svg";
-
 import { FilterBtn } from "../../styles/FilterButton";
 import { FilterContainer, InputSearchContainer, MainContainer } from "./styles";
 import { Header } from "../../components/Header";
@@ -14,6 +13,7 @@ import { RemoveRecipeModal } from "../../components/RemoveRecipeModal";
 export const ProfilePage = () => {
   const [editModal, setEditModal] = useState<boolean>(false);
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
+  const [recipeId, setRecipeId] = useState<Number | null>(null);
 
   const { userRecipesList, getUserProfile } = useContext(RecipesContext);
 
@@ -26,7 +26,12 @@ export const ProfilePage = () => {
       {editModal && (
         <RecipeModal modalTitle="Criar Receita" setEditModal={setEditModal} />
       )}
-      {deleteModal && <RemoveRecipeModal setDeleteModal={setDeleteModal} />}
+      {deleteModal && (
+        <RemoveRecipeModal
+          setDeleteModal={setDeleteModal}
+          recipeId={recipeId}
+        />
+      )}
       <Header />
 
       <FilterContainer>
@@ -57,6 +62,7 @@ export const ProfilePage = () => {
           array={userRecipesList}
           onProfilePage={true}
           setDeleteModal={setDeleteModal}
+          setRecipeId={setRecipeId}
         />
       </MainContainer>
 
