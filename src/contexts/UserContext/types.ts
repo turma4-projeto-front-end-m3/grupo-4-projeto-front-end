@@ -9,6 +9,7 @@ export interface iUserProvider {
   setUser: Dispatch<SetStateAction<iUser | null>>;
   loginUser: (data: iLoginData) => Promise<void>;
   registerUser: (data: iRegisterData) => Promise<void>;
+  loading: boolean;
 }
 
 export interface iUser {

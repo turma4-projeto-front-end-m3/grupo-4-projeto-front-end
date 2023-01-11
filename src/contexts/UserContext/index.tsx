@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
@@ -15,14 +15,13 @@ export const UserContext = createContext({} as iUserProvider);
 
 export const UserProvider = ({ children }: iUserProviderProps) => {
   const [user, setUser] = useState<iUser | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const navegate = useNavigate();
 
   const registerUser = async (data: iRegisterData): Promise<void> => {
     try {
       setLoading(true);
       const response = await api.post("register", data);
-
       toast.success("Conta criada com sucesso!");
       navegate("/login");
     } catch (error) {
@@ -56,8 +55,32 @@ export const UserProvider = ({ children }: iUserProviderProps) => {
     }
   };
 
+  useEffect(() => {
+    const loadUser = async () => {
+        const token = localStorage.getItem("@token");
+        const userId = localStorage.getItem("@UserId");
+        if(!token) {
+            setLoading(false)
+            return;
+        } 
+        try {
+            const { data } = await api.get(`/users/${userId}`, {
+                headers: {
+                    authorization: `Bearer ${token}`
+                }
+            })
+            setUser(data)
+        } catch (error) {
+            console.error(error)
+        } finally {
+            setLoading(false)
+        }
+    }
+    loadUser()
+  }, [])
+
   return (
-    <UserContext.Provider value={{ user, setUser, loginUser, registerUser }}>
+    <UserContext.Provider value={{ user, setUser, loginUser, registerUser, loading }}>
       {children}
     </UserContext.Provider>
   );
