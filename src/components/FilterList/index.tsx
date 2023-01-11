@@ -9,7 +9,7 @@ export const FilterList = ({categories, setFilter} : iFilterListProps) => {
     return (
         <FiltersContainer>
         {categories.map((category) => 
-            <FilterBtn key={category.length - 1} onClick={() => 
+            <FilterBtn key={categories.findIndex((element) => element === category)} onClick={() => 
                 {category === "Todos"? setFilter("") : setFilter(category)}}>
                 {category}
             </FilterBtn>)}

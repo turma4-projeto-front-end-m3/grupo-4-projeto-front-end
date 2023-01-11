@@ -8,8 +8,8 @@ import { iRecipesList } from "../../contexts/RecipesContext/types";
 interface iRecipeListProps {
   array: iRecipesList[] | null;
   onProfilePage: boolean;
-  setDeleteModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setRecipeId: React.Dispatch<React.SetStateAction<Number | null>>;
+  setDeleteModal?: React.Dispatch<React.SetStateAction<boolean>>;
+  setRecipeId?: React.Dispatch<React.SetStateAction<Number | null>>;
 }
 
 export const RecipesList = ({
@@ -45,8 +45,8 @@ export const RecipesList = ({
                 <RecipeBtn
                   btnColor="pink"
                   onClick={() => {
-                    setDeleteModal(true);
-                    setRecipeId(recipe.id);
+                    setDeleteModal && setDeleteModal(true);
+                    setRecipeId && setRecipeId(recipe.id);
                   }}
                 >
                   <img src={DeleteIcon} alt="Botão de deletar receita" />
