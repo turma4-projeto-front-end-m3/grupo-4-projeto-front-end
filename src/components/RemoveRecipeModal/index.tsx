@@ -1,5 +1,5 @@
 import { StyledRemoveModal, StyledRemoveRecipeModalBackground } from "./styles";
-import { IoMdClose } from "react-icons/Io";
+import { IoMdClose } from "react-icons/io";
 import { BsCheck2All } from "react-icons/bs";
 import { useContext } from "react";
 import { RecipesContext } from "../../contexts/RecipesContext";
