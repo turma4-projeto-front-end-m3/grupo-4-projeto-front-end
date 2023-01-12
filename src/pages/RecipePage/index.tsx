@@ -103,23 +103,16 @@ export const RecipePage = () => {
                 </div>
                 {viewRecipe.userId === userInfo?.id && (
                   <div>
-<<<<<<< HEAD
-                    <button className="editBtn">
-                      <img src={editIcon} alt="" />
-                    </button>
-                    <button className="deleteBtn">
-=======
-                    <button onClick={() => {
+                    <button className="editBtn" onClick={() => {
                       setEditModal(true);
                       setModalInfo(viewRecipe);
                     }}>
                       <img src={editIcon} alt="" />
                     </button>
-                    <button onClick={() => {
+                    <button className="deleteBtn" onClick={() => {
                       setDeleteModal(true);
                       setRecipeId(viewRecipe.id);
                     }}>
->>>>>>> b0c8854f04d4131089a9b0bcac5ed2e2f417a8b2
                       <img src={deleteIcon} alt="" />
                     </button>
                   </div>
