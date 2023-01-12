@@ -4,6 +4,17 @@ export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 2.5rem;
+
+  .NoRecipe{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    p {
+      font-size: 15px;
+      font-weight: 700;
+    }
+  }
 `;
 
 export const RecipeItem = styled.li`

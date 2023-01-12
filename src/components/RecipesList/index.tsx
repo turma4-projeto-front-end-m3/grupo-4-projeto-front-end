@@ -7,6 +7,7 @@ import { iRecipesList } from "../../contexts/RecipesContext/types";
 import { useContext } from "react";
 import { RecipesContext } from "../../contexts/RecipesContext";
 import { useNavigate } from "react-router-dom";
+import { BiWinkSmile } from "react-icons/bi"
 
 interface iRecipeListProps {
   array: iRecipesList[] | null;
@@ -28,46 +29,55 @@ export const RecipesList = ({
   
   return (
     <List>
-      {array?.map((recipe) => (
-        <RecipeItem key={recipe.id}>
-          <img src={recipe.recipeImg} />
+      { array?.length === 0 ? (
+        <div className="NoRecipe">
+          <p>Você não possui nenhuma receita cadastrada </p>
+          <p>Compartilhe uma receita com a gente e nos conte o seu segredo! <BiWinkSmile/></p>
+        </div>
+      ): ( <>
+      
+        {array?.map((recipe) => (
+          <RecipeItem key={recipe.id}>
+            <img src={recipe.recipeImg} />
 
-          <RecipeItemContent>
-            <div>
-              <h3>{recipe.recipeName}</h3>
+            <RecipeItemContent>
+              <div>
+                <h3>{recipe.recipeName}</h3>
 
-              <div className="avaliation_container">
-                <img src={StarIcon} className="star_icon" />
-                <span>{Number(recipe.rating).toFixed(1)}</span>
+                <div className="avaliation_container">
+                  <img src={StarIcon} className="star_icon" />
+                  <span>{Number(recipe.rating).toFixed(1)}</span>
+                </div>
               </div>
-            </div>
 
-            <span>Tempo de preparo: {recipe.prepTime}</span>
+              <span>Tempo de preparo: {recipe.prepTime}</span>
 
-            <div>
-              <RecipeBtn btnColor="green" onClick={() => {
-                setViewRecipe(recipe);
-                localStorage.setItem("@viewRecipe", JSON.stringify(recipe));
-                navigate("/recipe");
-              }}>
-                <img src={ViewIcon} alt="Botão de ver receita" />
-              </RecipeBtn>
-
-              {onProfilePage && (
-                <RecipeBtn
-                  btnColor="pink"
-                  onClick={() => {
-                    setDeleteModal && setDeleteModal(true);
-                    setRecipeId && setRecipeId(recipe.id);
-                  }}
-                >
-                  <img src={DeleteIcon} alt="Botão de deletar receita" />
+              <div>
+                <RecipeBtn btnColor="green" onClick={() => {
+                  setViewRecipe(recipe);
+                  localStorage.setItem("@viewRecipe", JSON.stringify(recipe));
+                  navigate("/recipe");
+                }}>
+                  <img src={ViewIcon} alt="Botão de ver receita" />
                 </RecipeBtn>
-              )}
-            </div>
-          </RecipeItemContent>
-        </RecipeItem>
-      ))}
+
+                {onProfilePage && (
+                  <RecipeBtn
+                    btnColor="pink"
+                    onClick={() => {
+                      setDeleteModal && setDeleteModal(true);
+                      setRecipeId && setRecipeId(recipe.id);
+                    }}
+                  >
+                    <img src={DeleteIcon} alt="Botão de deletar receita" />
+                  </RecipeBtn>
+                )}
+              </div>
+            </RecipeItemContent>
+          </RecipeItem>
+        ))}
+      </>
+      )}
     </List>
   );
 };
