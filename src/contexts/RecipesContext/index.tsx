@@ -35,6 +35,7 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
     userId: 0,
     id: 0,
   });
+  const [modalInfo, setModalInfo] = useState<iRecipesList | null>(null)
 
   const categories = [
     "Todos",
@@ -90,6 +91,14 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
     toast("Receita removida com sucesso!");
   };
 
+  const patchChangeRecipe = async (recipeId: Number, data: iRecipesList | null) => {
+    try {
+      const response = await api.patch(`/recipes/${recipeId}`, data);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <RecipesContext.Provider
@@ -104,6 +113,9 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
         getUserProfile,
         postCreateRecipe,
         deleteRecipe,
+        setModalInfo,
+        modalInfo,
+        patchChangeRecipe
       }}
     >
       {children}

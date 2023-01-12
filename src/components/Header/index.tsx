@@ -19,8 +19,6 @@ export const Header = () => {
     navigate("/");
   };
 
-  console.log(user?.imgUrl);
-
   return (
     <HeaderContainer>
       <nav>
