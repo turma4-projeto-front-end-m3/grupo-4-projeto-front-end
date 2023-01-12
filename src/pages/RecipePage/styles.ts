@@ -27,6 +27,43 @@ export const ContainerRecipe = styled.div`
   gap: 5rem;
   padding: 25px;
 
+  .editBtn{
+    width: 70px;
+    height: 45px;
+    
+    border: none;
+    border-radius: 4px;
+    background-color: var(--secondary-color);
+    color: var(--white);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover{
+      background-color: var(--primary-color);
+    }
+  }
+
+  .deleteBtn{
+    width: 70px;
+    height: 45px;
+    
+    border: none;
+    border-radius: 4px;
+    background-color: var(--alert);
+    color: var(--white);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: var(--background-color);
+    }
+
+  }
+
   @media (max-width: 500px) {
     width: 95%;
   }
