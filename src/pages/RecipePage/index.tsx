@@ -87,10 +87,10 @@ export const RecipePage = () => {
                 </div>
                 {viewRecipe.userId === userInfo?.id && (
                   <div>
-                    <button>
+                    <button className="editBtn">
                       <img src={editIcon} alt="" />
                     </button>
-                    <button>
+                    <button className="deleteBtn">
                       <img src={deleteIcon} alt="" />
                     </button>
                   </div>
