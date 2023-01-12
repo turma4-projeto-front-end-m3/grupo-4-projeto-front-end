@@ -148,13 +148,14 @@ export const ContainerRecipe = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 281px;
     height: 299px;
     background: #e8e8e8;
     border: 1px solid var(--secondary-color);
     border-radius: 8px;
     padding: 15px 20px;
+    gap: 2rem;
 
     span:nth-child(1) {
       font-weight: 600;
@@ -178,6 +179,7 @@ export const ContainerRecipe = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    gap: 1rem;
 
     & div:nth-child(2) {
       height: 150px;
@@ -186,6 +188,7 @@ export const ContainerRecipe = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 1rem;
 
       img {
         width: 52px;
