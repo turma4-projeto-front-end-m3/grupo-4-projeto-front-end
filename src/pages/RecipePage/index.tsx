@@ -11,6 +11,8 @@ import profileImg from "../../assets/img_perfil_default.png"
 import { useContext, useEffect, useState } from "react";
 import { RecipesContext } from "../../contexts/RecipesContext";
 import { api } from "../../services/api";
+import { RecipeModal } from "../../components/RecipeModal";
+import { RemoveRecipeModal } from "../../components/RemoveRecipeModal";
 
 export interface iUser {
   email: string;
@@ -22,12 +24,15 @@ export interface iUser {
 
 export const RecipePage = () => {
 
-  const { viewRecipe, setViewRecipe, userInfo, getUserProfile } = useContext(RecipesContext);
+  const { viewRecipe, setViewRecipe, userInfo, getUserProfile, setModalInfo } = useContext(RecipesContext);
 
   const [userFound, setUserFound] = useState({
     username: "",
     imgUrl: "",
   });
+  const [editModal, setEditModal] = useState<boolean>(false);
+  const [deleteModal, setDeleteModal] = useState<boolean>(false);
+  const [recipeId, setRecipeId] = useState<Number | null>(null);
 
   useEffect(() => {
     getUserProfile();
@@ -70,6 +75,17 @@ export const RecipePage = () => {
   
   return (
     <RecipePageStyles>
+      {editModal && (
+        <RecipeModal modalTitle="Editar receita" setEditModal={setEditModal} modalSubmit={false}/>
+      )}
+
+      {deleteModal && (
+        <RemoveRecipeModal
+          setDeleteModal={setDeleteModal}
+          recipeId={recipeId}
+        />
+      )}
+
       <Header />
       <MainRecipeStyles>
         <ContainerRecipe>
@@ -87,10 +103,23 @@ export const RecipePage = () => {
                 </div>
                 {viewRecipe.userId === userInfo?.id && (
                   <div>
+<<<<<<< HEAD
                     <button className="editBtn">
                       <img src={editIcon} alt="" />
                     </button>
                     <button className="deleteBtn">
+=======
+                    <button onClick={() => {
+                      setEditModal(true);
+                      setModalInfo(viewRecipe);
+                    }}>
+                      <img src={editIcon} alt="" />
+                    </button>
+                    <button onClick={() => {
+                      setDeleteModal(true);
+                      setRecipeId(viewRecipe.id);
+                    }}>
+>>>>>>> b0c8854f04d4131089a9b0bcac5ed2e2f417a8b2
                       <img src={deleteIcon} alt="" />
                     </button>
                   </div>
