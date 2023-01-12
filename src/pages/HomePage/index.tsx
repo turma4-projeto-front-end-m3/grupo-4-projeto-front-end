@@ -1,4 +1,5 @@
 import { Header } from "../../components/Header";
+import SearchIcon from "../../assets/search_icon.svg";
 import Welcome from "../../assets/BemVindo.svg";
 import {
   Button,
@@ -10,28 +11,48 @@ import { FilterBtn } from "../../styles/FilterButton";
 import { InputSearchContainer } from "../ProfilePage/styles";
 import { Footer } from "../../components/Footer";
 import { RecipesList } from "../../components/RecipesList";
+import { useContext, useEffect, useState } from "react";
+import { RecipesContext } from "../../contexts/RecipesContext";
+import { FilterList } from "../../components/FilterList";
 export const HomePage = () => {
+  const {recipeList, getAllRecipes, categories} = useContext(RecipesContext);
+  const [filter, setFilter] = useState("");
+  const [filterText, setFilterText] = useState("")
+  const [openModal, setOpenModal] = useState(false);
+
+  const filteredProducts = recipeList && recipeList.filter(
+    (recipe) => (
+        filter === "" ?
+        true :
+        recipe.recipeName.toLowerCase().includes(filter.toLowerCase()) || recipe.category.toLowerCase().includes(filter.toLowerCase())
+    )
+  )
+
+  useEffect(() => {
+    getAllRecipes();
+  }, []);
   return (
     <>
       <Header />
       <HomeContainer>
         <div>
-          <img src={Welcome} alt="Bem Vindo!" />
+            <img src={Welcome} alt="Bem Vindo!" />
+          
           <HomePublish>
             <h1>Deseja Publicar Uma Receita?</h1>
             <Button>+</Button>
+            
+            <div className="divInputSearch">
+              <input onChange={(e) => {setFilter(e.target.value)}} type="text" placeholder="Pesquisar por..." />
+              <img src={SearchIcon} alt="Icone de pesquisa" />
+            </div>
+
           </HomePublish>
           <HomeFilterContainer>
-            <FilterBtn>Todos</FilterBtn>
-            <FilterBtn>Massas</FilterBtn>
-            <FilterBtn>Lanches</FilterBtn>
-            <FilterBtn>Carnes</FilterBtn>
-            <FilterBtn>Sobremesas</FilterBtn>
+            <FilterList categories={categories} setFilter={setFilter} />
           </HomeFilterContainer>
-          <InputSearchContainer></InputSearchContainer>
         </div>
-        <RecipesList />
-        <RecipesList />
+        <RecipesList array={filteredProducts} onProfilePage={false} />
       </HomeContainer>
       <Footer />
     </>

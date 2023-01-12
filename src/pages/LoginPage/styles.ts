@@ -151,6 +151,7 @@ export const MainStyle = styled.main`
              text-align: center;
 
         p {
+            margin-top: 15px;
             font-weight: 400;
             font-size: 13px;
         }
@@ -216,4 +217,12 @@ export const FormLogin = styled.form`
 
 
 
+`
+
+export const ErrorMessage = styled.p`
+    margin-bottom: 5px;
+
+    color: red;
+    font-size: 10px;
+    font-weight: 700;
 `

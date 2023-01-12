@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
 export const StyledRecipeModalBackground = styled.div`
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100%;
-  background-color: rgb(0, 0, 0, 0.5);
+  background-color: rgba(107, 202, 60, 0.38);
+  z-index: 999;
 
   @media (max-width: 630px) {
     height: max-content;
@@ -93,9 +95,46 @@ export const StyledRecipeModal = styled.div`
     section {
       width: 100%;
       height: 20%;
+      max-height: 20%;
+
       border-radius: 0.5rem;
+
       background-color: #ffffff;
+
       margin-bottom: 2.5rem;
+
+      overflow-y: auto;
+
+      ul {
+        list-style: none;
+
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        padding: 10px 5px;
+      }
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 95%;
+
+        border: 1px solid var(--gray);
+        border-radius: 5px;
+
+        padding: 0 0.3rem;
+
+        svg {
+          cursor: pointer;
+
+          :hover {
+            color: var(--alert);
+          }
+        }
+      }
 
       @media (max-width: 630px) {
         height: 5rem;
@@ -106,6 +145,31 @@ export const StyledRecipeModal = styled.div`
   .miniCont {
     display: flex;
     flex-direction: row;
+
+    select {
+      width: 60px;
+
+      padding: 0;
+    }
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 30px;
+
+      border: none;
+      border-radius: 0.5rem;
+
+      padding: 0.5rem;
+
+      background-color: var(--white);
+    }
+
+    button:hover {
+      background-color: var(--gray);
+    }
   }
 
   .smallInput {
@@ -149,6 +213,10 @@ export const StyledCancelButton = styled.button`
   border: none;
   border-radius: 0.5rem;
   width: 48%;
+
+  :hover {
+    background-color: #faa0a0;
+  }
 `;
 
 export const StyledGreenButton = styled.button`
@@ -157,8 +225,13 @@ export const StyledGreenButton = styled.button`
   justify-content: center;
   padding: 0.8rem 1rem;
   background-color: var(--secondary-color);
+  opacity: 80%;
   color: #ffffff;
   border: none;
   border-radius: 0.5rem;
   width: 48%;
+
+  :hover {
+    opacity: 100%;
+  }
 `;

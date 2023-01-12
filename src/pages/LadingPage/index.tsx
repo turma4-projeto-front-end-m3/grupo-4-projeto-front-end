@@ -22,7 +22,7 @@ export const LadingPage = () => {
                 </div>
             </div>
 
-                <Link to="/loginPage">Começar a cozinhar <AiOutlineArrowRight/> </Link>
+                <Link to="/login">Começar a cozinhar <AiOutlineArrowRight/> </Link>
 
             </Container>
         </Main>
