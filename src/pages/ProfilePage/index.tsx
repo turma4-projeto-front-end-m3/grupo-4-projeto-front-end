@@ -34,7 +34,7 @@ export const ProfilePage = () => {
   return (
     <>
       {editModal && (
-        <RecipeModal modalTitle="Criar Receita" setEditModal={setEditModal} />
+        <RecipeModal modalTitle="Criar Receita" setEditModal={setEditModal} modalSubmit={true} />
       )}
       {deleteModal && (
         <RemoveRecipeModal

@@ -59,4 +59,7 @@ export interface iRecipesContext {
   getUserProfile: () => void;
   postCreateRecipe: (data: iCreateRecipeData) => void;
   deleteRecipe: (id: Number | null) => void;
+  setModalInfo: React.Dispatch<React.SetStateAction<iRecipesList | null>>;
+  modalInfo: iRecipesList | null;
+  patchChangeRecipe: (recipeId: Number, data: iRecipesList | null) => void;
 }

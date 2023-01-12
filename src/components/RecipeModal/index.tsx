@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { modalFormSchema } from "./modalFormSchema";
 import {
@@ -11,10 +11,12 @@ import {
 
 import { BsFillTrashFill } from "react-icons/bs";
 import { RecipesContext } from "../../contexts/RecipesContext";
+import { iRecipesList } from "../../contexts/RecipesContext/types";
 
 interface iRecipeModalProps {
   modalTitle: string;
   setEditModal: React.Dispatch<React.SetStateAction<boolean>>;
+  modalSubmit: boolean;
 }
 
 interface iModalFormData {
@@ -38,8 +40,10 @@ interface iIngredients {
 export const RecipeModal = ({
   modalTitle,
   setEditModal,
+  modalSubmit,
 }: iRecipeModalProps) => {
-  const { postCreateRecipe, getUserProfile, categories } = useContext(RecipesContext);
+
+  const { postCreateRecipe, getUserProfile, patchChangeRecipe, categories, modalInfo, setModalInfo, setViewRecipe } = useContext(RecipesContext);
 
   const [ingredientsList, setIngredientsList] = useState([] as iIngredients[]);
   const [ingredient, setIngredient] = useState<iIngredients>({
@@ -59,9 +63,20 @@ export const RecipeModal = ({
   const submit: SubmitHandler<iModalFormData> = (data: iModalFormData) => {
     const id = Number(localStorage.getItem("@UserId"));
 
-    const newData = { ...data, ingredients: ingredientsList, userId: id };
-    postCreateRecipe(newData);
-    getUserProfile();
+    if (modalSubmit){
+      const newData = { ...data, ingredients: ingredientsList, userId: id };
+
+      postCreateRecipe(newData);
+
+      getUserProfile();
+    }
+    else {
+      const newModalInfo: iRecipesList = {...data, ingredients: ingredientsList, userId: id};
+      console.log(newModalInfo)
+      patchChangeRecipe(Number(modalInfo?.id), newModalInfo);
+      setViewRecipe(newModalInfo);
+    }
+    setModalInfo(null);
     setEditModal(false);
   };
 
@@ -74,9 +89,14 @@ export const RecipeModal = ({
         qty: "",
         unity: "",
       });
-      console.log(ingredientsList);
     }
   };
+
+  useEffect(() => {
+    if(modalInfo !== null) {
+      setIngredientsList(modalInfo.ingredients)
+    }
+  }, [])
 
   return (
     <StyledRecipeModalBackground>
@@ -92,6 +112,7 @@ export const RecipeModal = ({
               id="title"
               placeholder="Digite o título..."
               {...register("recipeName")}
+              defaultValue={modalInfo ? modalInfo.recipeName : undefined}
             />
 
             <label htmlFor="image">Imagem</label>
@@ -99,6 +120,7 @@ export const RecipeModal = ({
               id="image"
               placeholder="Digite o link da imagem..."
               {...register("recipeImg")}
+              defaultValue={modalInfo ? modalInfo.recipeImg : undefined}
             />
 
             <label htmlFor="portions">Rendimento</label>
@@ -108,6 +130,7 @@ export const RecipeModal = ({
               type="number"
               {...register("portions")}
               min={1}
+              defaultValue={modalInfo ? modalInfo.portions : undefined}
             />
 
             <label htmlFor="prepTime">Tempo de preparo</label>
@@ -115,6 +138,7 @@ export const RecipeModal = ({
               id="prepTime"
               placeholder="Digite o tempo de preparo..."
               {...register("prepTime")}
+              defaultValue={modalInfo ? modalInfo.prepTime : undefined}
             />
 
             <label htmlFor="rating">Avaliação da receita</label>
@@ -125,11 +149,12 @@ export const RecipeModal = ({
               min="1"
               max="5"
               {...register("rating")}
+              defaultValue={modalInfo ? modalInfo.rating : undefined}
             />
 
             <label htmlFor="category">Categoria</label>
-            <select id="category" {...register("category")}>
-              <option hidden>Selecione a categoria</option>
+            <select id="category" {...register("category")} defaultValue={modalInfo ? modalInfo.category : ""}>
+              <option value="" hidden>Selecione a categoria</option>
               {categories.map((category) => {
                 if(category !== "Todos") {
                   return <option key={category} value={category}>{category}</option>
@@ -218,7 +243,7 @@ export const RecipeModal = ({
             </section>
 
             <label>Modo de Preparo</label>
-            <textarea {...register("description")}></textarea>
+            <textarea {...register("description")} defaultValue={modalInfo ? modalInfo.description : undefined}></textarea>
             <div className="buttonMiniCont">
               <StyledCancelButton
                 type="button"

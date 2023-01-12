@@ -3,6 +3,7 @@ import { IoMdClose } from "react-icons/Io";
 import { BsCheck2All } from "react-icons/bs";
 import { useContext } from "react";
 import { RecipesContext } from "../../contexts/RecipesContext";
+import { useNavigate } from "react-router-dom";
 
 interface iRemoveRecipeModalProps {
   recipeId: Number | null;
@@ -14,6 +15,8 @@ export const RemoveRecipeModal = ({
   recipeId,
 }: iRemoveRecipeModalProps) => {
   const { deleteRecipe, getUserProfile } = useContext(RecipesContext);
+
+  const navigate = useNavigate()
 
   return (
     <StyledRemoveRecipeModalBackground>
@@ -31,6 +34,7 @@ export const RemoveRecipeModal = ({
                 deleteRecipe(recipeId);
                 getUserProfile();
                 setDeleteModal(false);
+                navigate("/profile");
               }}
             >
               <BsCheck2All size={30} />
