@@ -5,20 +5,14 @@ export interface iChildrenProps {
 export interface iRecipesList {
   recipeName: string;
   category: string;
-  ingredients: [
-    {
-      ingredientName: string;
-      qty: number;
-      unity: string;
-    }
-  ];
+  ingredients: iIngredients[];
   prepTime: string;
   portions: string;
   description: string;
   recipeImg: string;
   rating: string;
   userId: number;
-  id: number;
+  id?: number;
 }
 
 export interface iUserInfo {
