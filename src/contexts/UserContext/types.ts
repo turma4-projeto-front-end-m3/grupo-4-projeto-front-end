@@ -16,6 +16,7 @@ export interface iUser {
   id: string;
   username: string;
   email: string;
+  imgUrl: string;
 }
 
 export interface iLoginData {
@@ -25,7 +26,7 @@ export interface iLoginData {
 
 export interface iRegisterData {
   username: string;
-  img: string;
+  imgUrl: string;
   email: string;
   password: string;
   retypePassword: string;
