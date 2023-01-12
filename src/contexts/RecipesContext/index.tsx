@@ -90,6 +90,7 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
     toast("Receita removida com sucesso!");
   };
 
+
   return (
     <RecipesContext.Provider
       value={{
@@ -98,11 +99,11 @@ export const RecipesProvider = ({ children }: iChildrenProps) => {
         userRecipesList,
         categories,
         viewRecipe,
+        setViewRecipe,
         getAllRecipes,
         getUserProfile,
         postCreateRecipe,
         deleteRecipe,
-        setViewRecipe,
       }}
     >
       {children}

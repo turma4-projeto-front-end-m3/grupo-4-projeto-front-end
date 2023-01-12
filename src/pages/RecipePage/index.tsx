@@ -8,13 +8,66 @@ import starIcon from "../../assets/star_icon.svg"
 import timeIcon from "../../assets/time.svg"
 import foodIcon from "../../assets/garfo.png"
 import profileImg from "../../assets/img_perfil_default.png"
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RecipesContext } from "../../contexts/RecipesContext";
+import { api } from "../../services/api";
+
+export interface iUser {
+  email: string;
+  password: string;
+  username: string;
+  imgUrl: string;
+  id: number;
+}
 
 export const RecipePage = () => {
 
-  const { viewRecipe, userInfo } = useContext(RecipesContext);
+  const { viewRecipe, setViewRecipe, userInfo, getUserProfile } = useContext(RecipesContext);
 
+  const [userFound, setUserFound] = useState({
+    username: "",
+    imgUrl: "",
+  });
+
+  useEffect(() => {
+    getUserProfile();
+
+    const recipe = JSON.parse(localStorage.getItem("@viewRecipe") as string);
+    
+    setViewRecipe(recipe);
+    
+    const verifyUser = async () => {
+      const getAllUsers = async () => {
+        try {
+          const tokenUser = localStorage.getItem("@token");
+          api.defaults.headers.common.authorization = `Bearer ${tokenUser}`;
+    
+          const response = await api.get("users");
+    
+          return response.data;
+        } catch (error) {
+          console.log(error);
+        }
+    
+      }
+  
+      if (viewRecipe.userId !== userInfo?.id) {
+        const allUsers = await getAllUsers();
+  
+        const user = allUsers && allUsers.filter((user: iUser) => user.id === viewRecipe.userId);
+
+        setUserFound({...userFound, username: user[0].username, imgUrl: user[0].imgUrl});
+      }
+      else {
+        setUserFound({...userFound, username: userInfo.username, imgUrl: userInfo.imgUrl});
+      }
+
+      localStorage.setItem("@userFound", JSON.stringify(userFound));
+    }
+    verifyUser();
+
+  }, [])
+  
   return (
     <RecipePageStyles>
       <Header />
@@ -66,11 +119,12 @@ export const RecipePage = () => {
                 <div className="cooker">
                   <span>
                     Receita criada por:
+
                   </span>
                   <span>
-                    {userInfo?.username}
+                    {userFound.username}
                   </span>
-                  <img src={userInfo?.imgUrl} alt={userInfo?.username} />
+                  <img src={userFound.imgUrl} />
                 </div>
               </div>
             </div>
