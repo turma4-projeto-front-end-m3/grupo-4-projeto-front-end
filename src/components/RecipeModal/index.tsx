@@ -39,7 +39,7 @@ export const RecipeModal = ({
   modalTitle,
   setEditModal,
 }: iRecipeModalProps) => {
-  const { postCreateRecipe, getUserProfile } = useContext(RecipesContext);
+  const { postCreateRecipe, getUserProfile, categories } = useContext(RecipesContext);
 
   const [ingredientsList, setIngredientsList] = useState([] as iIngredients[]);
   const [ingredient, setIngredient] = useState<iIngredients>({
@@ -130,10 +130,11 @@ export const RecipeModal = ({
             <label htmlFor="category">Categoria</label>
             <select id="category" {...register("category")}>
               <option hidden>Selecione a categoria</option>
-              <option>Massas</option>
-              <option>Carnes</option>
-              <option>Saladas</option>
-              <option>Sobremesas</option>
+              {categories.map((category) => {
+                if(category !== "Todos") {
+                  return <option key={category} value={category}>{category}</option>
+                }
+              })}
             </select>
           </div>
           <div>

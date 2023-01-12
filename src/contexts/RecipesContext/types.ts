@@ -54,9 +54,9 @@ export interface iRecipesContext {
   userRecipesList: iRecipesList[] | null;
   categories: string[];
   viewRecipe: iRecipesList;
+  setViewRecipe: React.Dispatch<React.SetStateAction<iRecipesList>>;
   getAllRecipes: () => void;
   getUserProfile: () => void;
   postCreateRecipe: (data: iCreateRecipeData) => void;
   deleteRecipe: (id: Number | null) => void;
-  setViewRecipe: React.Dispatch<React.SetStateAction<iRecipesList>>;
 }

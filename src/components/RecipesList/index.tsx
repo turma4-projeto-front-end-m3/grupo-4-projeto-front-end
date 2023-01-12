@@ -47,6 +47,7 @@ export const RecipesList = ({
             <div>
               <RecipeBtn btnColor="green" onClick={() => {
                 setViewRecipe(recipe);
+                localStorage.setItem("@viewRecipe", JSON.stringify(recipe));
                 navigate("/recipe");
               }}>
                 <img src={ViewIcon} alt="Botão de ver receita" />
